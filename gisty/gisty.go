@@ -22,8 +22,10 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/api"
 	"github.com/cli/cli/v2/pkg/cmd/factory"
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
+	"github.com/cli/cli/v2/pkg/cmd/gist/create"
 	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
 	"github.com/cli/cli/v2/pkg/cmd/gist/list"
+	"github.com/cli/cli/v2/pkg/cmd/gist/view"
 	"github.com/cli/cli/v2/pkg/cmdutil"
 	"github.com/cli/cli/v2/pkg/iostreams"
 )
@@ -58,8 +60,10 @@ type Gisty struct {
 // it can be used to overrride the default behavior of the commands.
 type AltFunc struct {
 	Clone     func(*clone.CloneOptions) error
+	Create    func(*create.CreateOptions) error
 	Delete    func(*delete.DeleteOptions) error
 	List      func(*list.ListOptions) error
+	Read      func(*view.ViewOptions) error
 	Stargazer func(*api.ApiOptions) error
 }
 
@@ -79,6 +83,7 @@ func NewGisty() *Gisty {
 	return &Gisty{
 		AltFunctions: AltFunc{
 			Clone:     nil,
+			Create:    nil,
 			Delete:    nil,
 			List:      nil,
 			Stargazer: nil,

@@ -14,11 +14,11 @@ import (
 
 // GistInfo holds information about a gist.
 type GistInfo struct {
-	UpdatedAt   time.Time
-	GistID      string
-	Description string
-	Files       int
-	IsPublic    bool
+	UpdatedAt   time.Time // UpdatedAt is the time when the gist was last updated.
+	GistID      string    // GistID is the ID of the gist.
+	Description string    // Description is the description of the gist.
+	Files       int       // Files is the number of files in the gist.
+	IsPublic    bool      // IsPublic is true if the gist is public.
 }
 
 // ----------------------------------------------------------------------------

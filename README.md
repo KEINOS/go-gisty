@@ -8,23 +8,28 @@
 go get "github.com/KENOS/go-gisty"
 ```
 
-- [x] `Gisty.Clone()` ... Clone a specified gist in GitHub to local.
-- [ ] `Gisty.Create()`
-- [x] `Gisty.Delete()` ... Delete a specified gist from GitHub.
-- [ ] `Gisty.Edit()`
-- [x] `Gisty.List()` ... List gists in GitHub.
-- [ ] `Gisty.ListCloned()`
-- [ ] `Gisty.View()`
-- [x] `Gisty.Stargazer()` ... Get number of stars of a specified gist in GitHub.
-
-> __Note__ : This package is a spin-off of the [`gist` subcommand](https://github.com/cli/cli/tree/trunk/pkg/cmd/gist) from the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli) and is intended to provide a similar functionality as the `gh gist` command in Go applications.
-> Conversely, if you want to perform gist operations with a single command, it is recommended to create an alias for the `gh gist` command in your shell configuration.
-
 ```go
 // This package requires a GitHub Personal Access Token (with gist scope)
 // to be set in the GITHUB_TOKEN/GH_TOKEN environment variable.
 import "github.com/KENOS/go-gisty/gisty"
+```
 
+- [ ] CRUD
+  - [x] `Gisty.Create()` ... Create a new gist with specified files to GitHub.
+  - [x] `Gisty.Read()` ... Get a content of a gist from GitHub.
+  - [ ] `Gisty.Update()` ... Push the local changes to the gist on GitHub.
+  - [x] `Gisty.Delete()` ... Delete a specified gist from GitHub.
+- [x] `Gisty.Clone()` ... Clone a specified gist in GitHub to local.
+- [x] `Gisty.List()` ... List gists in GitHub.
+- [x] `Gisty.Stargazer()` ... Get number of stars of a specified gist in GitHub.
+- [ ] `Gisty.ListCloned()` ... List gists in local.
+- [ ] `Gisty.Edit()` ... Edit a specified gist.(Probably, will not be implemented. Out of scope.)
+
+> __Note__ : This package is a spin-off of the [`gist` subcommand](https://github.com/cli/cli/tree/trunk/pkg/cmd/gist) from the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli) and is intended to provide a similar functionality as the `gh gist` command in Go applications.
+>
+> Conversely, if you want to perform gist operations with a single command, it is recommended to create an alias for the `gh gist` command in your shell configuration, instead of re-inventing the wheel like I did.
+
+```go
 func Example() {
     // Create a new Gisty instance.
     obj := gisty.NewGisty()
