@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
-	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
 )
 
@@ -19,13 +18,13 @@ func TestGisty_Clone_msg_on_error(t *testing.T) {
 	args := []string{targetGist, outDir}
 
 	obj.AltFunctions.Clone = func(*clone.CloneOptions) error {
-		return errors.New("forced error for cloning")
+		return NewErr("forced error for cloning")
 	}
 
 	err := obj.Clone(args)
 
 	// Assert that the clone command failed.
 	require.Error(t, err)
-	require.Contains(t, err.Error(), "failed to clone gist")
+	require.Contains(t, err.Error(), "failed to execute gist clone")
 	require.Contains(t, err.Error(), "forced error for cloning")
 }

@@ -2,7 +2,6 @@ package gisty
 
 import (
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
-	"github.com/pkg/errors"
 )
 
 // Clone clones a gist with the given args.
@@ -20,13 +19,16 @@ func (g *Gisty) Clone(args []string) error {
 	return g.clone(args, g.AltFunctions.Clone)
 }
 
-func (g *Gisty) clone(args []string, runF func(*clone.CloneOptions) error) error {
-	cmdList := clone.NewCmdClone(g.Factory, runF)
+// clone is a wrapper around the clone command from the gh cli.
+//
+// If altF is not nil, it will be used instead of the default function.
+func (g *Gisty) clone(args []string, altF func(*clone.CloneOptions) error) error {
+	cmdList := clone.NewCmdClone(g.Factory, altF)
 
 	cmdList.SetArgs(args)
 	cmdList.SetIn(g.Stdin)
 	cmdList.SetOut(g.Stdout)
 	cmdList.SetErr(g.Stderr)
 
-	return errors.Wrap(cmdList.Execute(), "failed to clone gist")
+	return WrapIfErr(cmdList.Execute(), "failed to execute gist clone")
 }

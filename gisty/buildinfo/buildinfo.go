@@ -1,5 +1,5 @@
 /*
-Package build provides version information about the current build.
+Package buildinfo provides version information about the current build.
 
 The values "Version" and "Date" should be set via `-ldflags` option during build.
 Sample command to build:
@@ -7,7 +7,7 @@ Sample command to build:
 	$ VER_APP="$(git describe --tag)"
 	$ go build -ldflags="-X 'main.Version=${VER_APP}'" ./path/to/main.go
 */
-package build
+package buildinfo
 
 import "runtime/debug"
 

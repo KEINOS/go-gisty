@@ -18,7 +18,7 @@ package gisty
 import (
 	"bytes"
 
-	"github.com/KENOS/go-gisty/gisty/build"
+	"github.com/KENOS/go-gisty/gisty/buildinfo"
 	"github.com/cli/cli/v2/pkg/cmd/api"
 	"github.com/cli/cli/v2/pkg/cmd/factory"
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
@@ -73,8 +73,8 @@ type AltFunc struct {
 
 // NewGisty returns a new instance of Gisty.
 func NewGisty() *Gisty {
-	buildDate := build.Date
-	buildVersion := build.Version
+	buildDate := buildinfo.Date
+	buildVersion := buildinfo.Version
 	ios, stdin, stdout, stderr := iostreams.Test()
 	cmdFactory := factory.New(buildVersion)
 
@@ -86,6 +86,7 @@ func NewGisty() *Gisty {
 			Create:    nil,
 			Delete:    nil,
 			List:      nil,
+			Read:      nil,
 			Stargazer: nil,
 		},
 		Factory:      cmdFactory,
@@ -95,4 +96,26 @@ func NewGisty() *Gisty {
 		BuildDate:    buildDate,
 		BuildVersion: buildVersion,
 	}
+}
+
+// ----------------------------------------------------------------------------
+//  Functions
+// ----------------------------------------------------------------------------
+
+// SanitizeGistID removes non-alphanumeric characters from gistID.
+func SanitizeGistID(gistID string) string {
+	bytesGistID := []byte(gistID)
+	index := 0
+
+	for _, b := range bytesGistID {
+		if ('a' <= b && b <= 'z') ||
+			('A' <= b && b <= 'Z') ||
+			('0' <= b && b <= '9') ||
+			b == ' ' {
+			bytesGistID[index] = b
+			index++
+		}
+	}
+
+	return string(bytesGistID[:index])
 }

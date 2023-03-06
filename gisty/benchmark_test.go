@@ -13,7 +13,7 @@ import (
 // To compare after enhancement, run:
 //   benchstat before.txt after.txt
 
-func Benchmark_sanitizeGistID(b *testing.B) {
+func BenchmarkSanitizeGistID(b *testing.B) {
 	// The Complete Works of William Shakespeare by William Shakespeare
 	// http://www.gutenberg.org/files/100/100-0.txt
 	data, err := os.ReadFile("testdata/shakespare.txt")
@@ -26,6 +26,6 @@ func Benchmark_sanitizeGistID(b *testing.B) {
 	b.ResetTimer()
 
 	for N := 0; N < b.N; N++ {
-		sanitizeGistID(strShakespeare)
+		SanitizeGistID(strShakespeare)
 	}
 }

@@ -2,7 +2,6 @@ package gisty
 
 import (
 	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
-	"github.com/pkg/errors"
 )
 
 // Delete deletes a gist for a given gist ID or URL.
@@ -12,13 +11,16 @@ func (g *Gisty) Delete(gist string) error {
 	return g.delete(gist, g.AltFunctions.Delete)
 }
 
-func (g *Gisty) delete(gist string, runF func(*delete.DeleteOptions) error) error {
-	cmdList := delete.NewCmdDelete(g.Factory, runF)
+// delete is a wrapper around the delete command from the gh cli.
+//
+// If altF is not nil, it will be used instead of the default delete function.
+func (g *Gisty) delete(gist string, altF func(*delete.DeleteOptions) error) error {
+	cmdList := delete.NewCmdDelete(g.Factory, altF)
 
 	cmdList.SetArgs([]string{gist})
 	cmdList.SetIn(g.Stdin)
 	cmdList.SetOut(g.Stdout)
 	cmdList.SetErr(g.Stderr)
 
-	return errors.Wrap(cmdList.Execute(), "failed to delete gist")
+	return WrapIfErr(cmdList.Execute(), "failed to delete gist")
 }

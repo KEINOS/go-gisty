@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/cli/cli/v2/pkg/cmd/gist/list"
-	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
 )
 
@@ -15,7 +14,7 @@ func TestGisty_List_msg_on_error(t *testing.T) {
 
 	// mock the list command to force failure
 	obj.AltFunctions.List = func(*list.ListOptions) error {
-		return errors.New("forced error for listing gists")
+		return NewErr("forced error for listing gists")
 	}
 
 	for _, args := range []ListArgs{

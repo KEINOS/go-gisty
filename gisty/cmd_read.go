@@ -5,7 +5,6 @@ import (
 
 	"github.com/cli/cli/v2/pkg/cmd/gist/shared"
 	"github.com/cli/cli/v2/pkg/cmd/gist/view"
-	"github.com/pkg/errors"
 )
 
 // Read returns a list of GistInfo objects. The returned list depends on the
@@ -14,20 +13,24 @@ func (g *Gisty) Read(gist string) (*shared.Gist, error) {
 	return g.read(gist, g.AltFunctions.Read)
 }
 
-func (g *Gisty) read(gist string, runF func(*view.ViewOptions) error) (*shared.Gist, error) {
-	resultGist := &shared.Gist{}
+// read is a wrapper around the read command from the gh cli.
+//
+// If altF is not nil, it will be used instead of the default function.
+func (g *Gisty) read(gist string, altF func(*view.ViewOptions) error) (*shared.Gist, error) {
+	resultGist := new(shared.Gist)
 
+	//nolint:nonamedreturns // Named return is intentional.
 	runView := func(opts *view.ViewOptions) (err error) {
 		resultGist, err = readRun(opts)
 		if err != nil {
-			return errors.Wrap(err, "failed to execute readRun function")
+			return WrapIfErr(err, "failed to execute readRun function")
 		}
 
 		return nil
 	}
 
-	if runF != nil {
-		runView = runF
+	if altF != nil {
+		runView = altF
 	}
 
 	cmdList := view.NewCmdView(g.Factory, runView)
@@ -37,8 +40,8 @@ func (g *Gisty) read(gist string, runF func(*view.ViewOptions) error) (*shared.G
 	cmdList.SetOut(g.Stdout)
 	cmdList.SetErr(g.Stderr)
 
-	if err := cmdList.Execute(); err != nil {
-		return nil, errors.Wrap(err, "failed to read gist")
+	if err := WrapIfErr(cmdList.Execute(), "failed to read gist"); err != nil {
+		return nil, err
 	}
 
 	return resultGist, nil
@@ -57,38 +60,39 @@ func readRun(opts *view.ViewOptions) (*shared.Gist, error) {
 	if strings.Contains(gistID, "/") {
 		id, err := shared.GistIDFromURL(gistID)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to parse gist ID from URL")
+			return nil, WrapIfErr(err, "failed to parse gist ID from URL")
 		}
 
 		gistID = id
 	}
 
 	if gistID == "" {
-		return nil, errors.New("no gist specified")
+		return nil, NewErr("no gist specified")
 	}
 
 	client, err := opts.HttpClient()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create http client")
+		return nil, WrapIfErr(err, "failed to create http client")
 	}
 
-	// forceFailReadConf is a dependency-injection to force the failure of reading
-	// the configuration. Since opts.Config is a function that returns an object of
-	// internal package config.Config we can't mock it directly.
 	cfg, err := opts.Config()
 	if err != nil || forceFailReadConf {
+		// forceFailReadConf is a dependency-injection to force the failure of
+		// reading the configuration. It was implemented so, since opts.Config
+		// is a function that returns an object of internal package config.Config
+		// we can't mock it directly.
 		if err == nil && forceFailReadConf {
-			err = errors.New("forced error")
+			err = NewErr("forced error")
 		}
 
-		return nil, errors.Wrap(err, "failed to read option config")
+		return nil, WrapIfErr(err, "failed to read option config")
 	}
 
 	hostname, _ := cfg.DefaultHost()
 
 	gist, err := sharedGetGist(client, hostname, gistID)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get gist")
+		return nil, WrapIfErr(err, "failed to get gist")
 	}
 
 	return gist, nil

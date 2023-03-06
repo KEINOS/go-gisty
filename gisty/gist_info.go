@@ -4,8 +4,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/pkg/errors"
 )
 
 // ----------------------------------------------------------------------------
@@ -34,14 +32,14 @@ type GistInfo struct {
 //		`1234567890abcdef	my gist	2 files	public	2018-01-01T00:00:00Z`
 func NewGistInfo(line string) (GistInfo, error) {
 	if line == "" {
-		return GistInfo{}, errors.New("empty line")
+		return GistInfo{}, NewErr("empty line")
 	}
 
 	chunks := strings.Split(line, "\t")
 	numChumkMax := 5
 
 	if len(chunks) < numChumkMax {
-		return GistInfo{}, errors.Errorf(
+		return GistInfo{}, NewErr(
 			"missing number of chunks: %d\ngiven line: %#v",
 			len(chunks),
 			line,
@@ -50,17 +48,17 @@ func NewGistInfo(line string) (GistInfo, error) {
 
 	files, err := extractFileNum(chunks[2])
 	if err != nil {
-		return GistInfo{}, err
+		return GistInfo{}, WrapIfErr(err, "failed to extract number of files")
 	}
 
 	isPublic, err := parseIsPublic(chunks[3])
 	if err != nil {
-		return GistInfo{}, err
+		return GistInfo{}, WrapIfErr(err, "failed to extract visibility")
 	}
 
 	updatedAt, err := parseTime(chunks[4])
 	if err != nil {
-		return GistInfo{}, err
+		return GistInfo{}, WrapIfErr(err, "failed to parse updatedAt")
 	}
 
 	return GistInfo{
@@ -80,16 +78,13 @@ func NewGistInfo(line string) (GistInfo, error) {
 //
 //	e.g.) "1 file" -> 1
 func extractFileNum(chunk string) (int, error) {
-	chunk = strings.TrimSuffix(chunk, "files")
-	chunk = strings.TrimSuffix(chunk, "file")
-	chunk = strings.TrimSpace(chunk)
+	trimmed := strings.TrimSuffix(chunk, "files")
+	trimmed = strings.TrimSuffix(trimmed, "file")
+	trimmed = strings.TrimSpace(trimmed)
 
-	numFiles, err := strconv.Atoi(chunk)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to parse number of files from: "+chunk)
-	}
+	numFiles, err := strconv.Atoi(trimmed)
 
-	return numFiles, nil
+	return numFiles, WrapIfErr(err, "failed to parse number of files from: %#v", chunk)
 }
 
 // parseIsPublic parses the given string and returns true if the string is "public".
@@ -101,7 +96,7 @@ func parseIsPublic(chunk string) (bool, error) {
 	case "secret":
 		return false, nil
 	default:
-		return false, errors.New("failed to parse isPublic from: " + chunk)
+		return false, NewErr("failed to parse isPublic from: " + chunk)
 	}
 }
 
@@ -112,7 +107,7 @@ func parseTime(chunk string) (time.Time, error) {
 
 	updatedAt, err := time.Parse(timeLayout, chunk)
 	if err != nil {
-		return time.Time{}, errors.Wrap(err, "failed to parse time from: "+chunk)
+		return time.Time{}, WrapIfErr(err, "failed to parse time from: "+chunk)
 	}
 
 	return updatedAt, nil

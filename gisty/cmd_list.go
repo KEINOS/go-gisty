@@ -5,18 +5,17 @@ import (
 	"strings"
 
 	"github.com/cli/cli/v2/pkg/cmd/gist/list"
-	"github.com/pkg/errors"
 )
 
 // ListArgs are the arguments/options to the List function.
 type ListArgs struct {
 	Limit      int  // Limit is the maximum number of gists to fetch (default 10)
-	OnlyPublic bool // Show only public gists
-	OnlySecret bool // Show only secret gists. With this flag, OnlyPublic is ignored.
+	OnlyPublic bool // Show only public gists. Ignored if OnlySecret is true.
+	OnlySecret bool // Show only secret gists. Prior than OnlyPublic.
 }
 
-// List returns a list of GistInfo objects. The returned list depends on the
-// arguments passed to the function.
+// List returns a list of GistInfo objects.
+// The returned list depends on the arguments passed to the function.
 func (g *Gisty) List(args ListArgs) ([]GistInfo, error) {
 	var argsList []string
 
@@ -37,16 +36,20 @@ func (g *Gisty) List(args ListArgs) ([]GistInfo, error) {
 	return g.list(argsList, g.AltFunctions.List)
 }
 
-func (g *Gisty) list(args []string, runF func(*list.ListOptions) error) ([]GistInfo, error) {
-	cmdList := list.NewCmdList(g.Factory, runF)
+// list is a wrapper around the list command from the gh cli.
+//
+// If altF is not nil, it will be used instead of the default delete function.
+func (g *Gisty) list(args []string, altF func(*list.ListOptions) error) ([]GistInfo, error) {
+	cmdList := list.NewCmdList(g.Factory, altF)
 
 	cmdList.SetArgs(args)
 	cmdList.SetIn(g.Stdin)
 	cmdList.SetOut(g.Stdout)
 	cmdList.SetErr(g.Stderr)
 
-	if err := cmdList.Execute(); err != nil {
-		return nil, errors.Wrap(err, "failed to execute 'gist list' command")
+	err := WrapIfErr(cmdList.Execute(), "failed to execute 'gist list' command")
+	if err != nil {
+		return nil, err
 	}
 
 	return parseGistInfo(g.Stdout.String())
@@ -64,9 +67,7 @@ func parseGistInfo(list string) ([]GistInfo, error) {
 		if line != "" {
 			gistInfo, err := NewGistInfo(line)
 			if err != nil {
-				errMsg := fmt.Sprintf("failed to parse gist info from: %#v", list)
-
-				return nil, errors.Wrap(err, errMsg)
+				return nil, WrapIfErr(err, "failed to parse gist info from: %#v", list)
 			}
 
 			result = append(result, gistInfo)

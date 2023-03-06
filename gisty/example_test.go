@@ -3,63 +3,82 @@ package gisty_test
 import (
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/KENOS/go-gisty/gisty"
+	"github.com/cli/cli/v2/pkg/cmd/api"
+	"github.com/cli/cli/v2/pkg/cmd/gist/list"
 )
 
 // ============================================================================
-//  Examples (E2E tests)
+//  Examples
 // ============================================================================
 
-// Example of listing gists.
-//
-// In this example, we are actually requesting the GitHub API (E2E test). This
-// is not the recommended method, as it is onerous on the API side, but it is
-// included for clarity and ease of use.
-func Example() {
+func ExampleGisty_List() {
 	obj := gisty.NewGisty()
 
-	// The below line is equivalent to:
-	//   gh gist list --public --limit 10
-	args := gisty.ListArgs{
-		Limit:      10,
-		OnlyPublic: true, // If both OnlyPublic and OnlySecret are true, OnlySecret is prior.
-		OnlySecret: false,
+	// Dummy function to avoid calling the actual GitHub API during test/example.
+	// Usually, you do not need to set this.
+	obj.AltFunctions.List = func(*list.ListOptions) error {
+		// Mock the GitHub API response.
+		fmt.Fprint(
+			obj.Stdout,
+			"d5b9800c636dd78defa4f15894d54d29	Title of gist item2	6 files	secret	2022-04-16T06:08:46Z",
+		)
+
+		return nil
 	}
 
-	items, err := obj.List(args)
+	gistInfos, err := obj.List(gisty.ListArgs{
+		Limit:      1000,  // Maximum number of gists to be obtained.
+		OnlyPublic: true,  // Get only public gists.
+		OnlySecret: false, // Get only secret gists. If true, then prior than OnlyPublic.
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(len(items))
-
-	// Sleep for 1 second to avoid too many requests to GitHub API
-	time.Sleep(time.Second)
-
-	// Output: 10
+	// Loop through the obtained gist information. In this example, only one
+	// gist is obtained.
+	for numItem, gistInfo := range gistInfos {
+		fmt.Printf("#%d GistID: %v\n", numItem+1, gistInfo.GistID)
+		fmt.Printf("#%d Description: %v\n", numItem+1, gistInfo.Description)
+		fmt.Printf("#%d Num files in a gist: %v\n", numItem+1, gistInfo.Files)
+		fmt.Printf("#%d IsPublic: %v\n", numItem+1, gistInfo.IsPublic)
+		fmt.Printf("#%d UpdatedAt: %v\n", numItem+1, gistInfo.UpdatedAt)
+	}
+	// Output:
+	// #1 GistID: d5b9800c636dd78defa4f15894d54d29
+	// #1 Description: Title of gist item2
+	// #1 Num files in a gist: 6
+	// #1 IsPublic: false
+	// #1 UpdatedAt: 2022-04-16 06:08:46 +0000 UTC
 }
 
 // Example to get the number of stars in the gist.
-//
-// In this example, we are actually requesting the GitHub API (E2E test). This
-// is not the recommended method, as it is onerous on the API side, but it is
-// included for clarity and ease of use.
 func ExampleGisty_Stargazer() {
-	gistID := "5b10b34f87955dfc86d310cd623a61d1"
 	obj := gisty.NewGisty()
+
+	// Dummy function to avoid calling the actual GitHub API during test/example.
+	// Usually, you do not need to set this.
+	obj.AltFunctions.Stargazer = func(*api.ApiOptions) error {
+		numStarsDummy := 10
+
+		// Mock the GitHub API response.
+		fmt.Fprintf(obj.Stdout, "'%d'", numStarsDummy)
+
+		return nil
+	}
+
+	// Target gist ID to obtain the number of stars.
+	gistID := "5b10b34f87955dfc86d310cd623a61d1"
 
 	count, err := obj.Stargazer(gistID)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if count > 1 {
-		fmt.Println("OK")
-	}
-
-	// Output: OK
+	fmt.Println(count)
+	// Output: 10
 }
 
 // ============================================================================
@@ -67,12 +86,19 @@ func ExampleGisty_Stargazer() {
 // ============================================================================
 
 // ----------------------------------------------------------------------------
+//  NewErr
+// ----------------------------------------------------------------------------
+
+// See: new_err_test.go
+
+// ----------------------------------------------------------------------------
 //  NewGistInfo
 // ----------------------------------------------------------------------------
 
 func ExampleNewGistInfo() {
-	// This line is one of the lines returned by the `gist list` command.
-	// Each line is tab separated and contains the following information:
+	// "line" is one of the lines returned by the `gist list` command as an
+	// example. Each line is tab separated and must contain the following
+	// information in that order:
 	//   1. Gist ID
 	//   2. Description
 	//   3. Number of files
@@ -80,19 +106,26 @@ func ExampleNewGistInfo() {
 	//   5. Updated at (RFC3339/ISO-8601 format)
 	line := "7101f542be23e5048198e2a27c3cfda8	Title of gist item1	1 file	public	2022-09-18T18:56:10Z"
 
+	// NewGistInfo parses the line and returns a GistInfo object.
 	item, err := gisty.NewGistInfo(line)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// Print the parsed information.
 	fmt.Printf("%T: %v\n", item.GistID, item.GistID)
 	fmt.Printf("%T: %v\n", item.Description, item.Description)
 	fmt.Printf("%T: %v\n", item.IsPublic, item.IsPublic)
 	fmt.Printf("%T: %v\n", item.UpdatedAt, item.UpdatedAt)
-
 	// Output:
 	// string: 7101f542be23e5048198e2a27c3cfda8
 	// string: Title of gist item1
 	// bool: true
 	// time.Time: 2022-09-18 18:56:10 +0000 UTC
 }
+
+// ----------------------------------------------------------------------------
+//  WrapIfErr
+// ----------------------------------------------------------------------------
+
+// See: wrap_if_err_test.go

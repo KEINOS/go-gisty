@@ -23,7 +23,7 @@ import "github.com/KENOS/go-gisty/gisty"
 - [x] `Gisty.List()` ... List gists in GitHub.
 - [x] `Gisty.Stargazer()` ... Get number of stars of a specified gist in GitHub.
 - [ ] `Gisty.ListCloned()` ... List gists in local.
-- [ ] `Gisty.Edit()` ... Edit a specified gist.(Probably, will not be implemented. Out of scope.)
+- [ ] `Gisty.Edit()` ... Edit a specified gist (Probably, will not be implemented. Out of scope.).
 
 > __Note__ : This package is a spin-off of the [`gist` subcommand](https://github.com/cli/cli/tree/trunk/pkg/cmd/gist) from the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli) and is intended to provide a **similar functionality as the `gh gist` command in Go applications**.
 >

@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/cli/cli/v2/pkg/cmd/gist/create"
-	"github.com/pkg/errors"
 )
 
+// CreateArgs are the arguments for the Create function.
 type CreateArgs struct {
 	// Description for this gist
 	Description string
@@ -18,6 +18,7 @@ type CreateArgs struct {
 	AsPublic bool
 }
 
+// Create creates a new gist with the given args and returns the URL of the gist.
 func (g *Gisty) Create(args CreateArgs) (*url.URL, error) {
 	argsCreate := []string{}
 
@@ -34,21 +35,24 @@ func (g *Gisty) Create(args CreateArgs) (*url.URL, error) {
 	return g.create(argsCreate, g.AltFunctions.Create)
 }
 
-func (g *Gisty) create(args []string, runF func(*create.CreateOptions) error) (gistURL *url.URL, err error) {
-	cmdList := create.NewCmdCreate(g.Factory, runF)
+// create is a wrapper around the create command from the gh cli.
+//
+// If altF is not nil, it will be used instead of the default function.
+func (g *Gisty) create(args []string, altF func(*create.CreateOptions) error) (*url.URL, error) {
+	cmdList := create.NewCmdCreate(g.Factory, altF)
 
 	cmdList.SetArgs(args)
 	cmdList.SetIn(g.Stdin)
 	cmdList.SetOut(g.Stdout)
 	cmdList.SetErr(g.Stderr)
 
-	err = errors.Wrap(cmdList.Execute(), "failed to create gist")
-	if err == nil {
-		gistURL, err = url.Parse(strings.TrimSpace(g.Stdout.String()))
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to parse gist URL")
-		}
+	err := WrapIfErr(cmdList.Execute(), "failed to execute create command")
+	if err != nil {
+		return nil, err
 	}
 
-	return gistURL, err
+	// Capture the result of the command execution and parse it.
+	gistURL, err := url.Parse(strings.TrimSpace(g.Stdout.String()))
+
+	return gistURL, WrapIfErr(err, "failed to parse gist URL")
 }
