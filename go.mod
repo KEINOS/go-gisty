@@ -1,4 +1,4 @@
-module github.com/KENOS/go-gisty
+module github.com/KEINOS/go-gisty
 
 go 1.19
 

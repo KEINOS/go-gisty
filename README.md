@@ -5,13 +5,13 @@
 ## Usage
 
 ```go
-go get "github.com/KENOS/go-gisty"
+go get "github.com/KIENOS/go-gisty"
 ```
 
 ```go
 // This package requires a GitHub Personal Access Token (with gist scope)
 // to be set in the GITHUB_TOKEN/GH_TOKEN environment variable.
-import "github.com/KENOS/go-gisty/gisty"
+import "github.com/KEINOS/go-gisty/gisty"
 ```
 
 - [x] CRUD

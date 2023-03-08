@@ -3,7 +3,7 @@ package gisty_test
 import (
 	"fmt"
 
-	"github.com/KENOS/go-gisty/gisty"
+	"github.com/KEINOS/go-gisty/gisty"
 )
 
 // ============================================================================

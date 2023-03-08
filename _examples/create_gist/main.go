@@ -5,7 +5,7 @@ import (
 	"log"
 	"path/filepath"
 
-	"github.com/KENOS/go-gisty/gisty"
+	"github.com/KEINOS/go-gisty/gisty"
 )
 
 func main() {

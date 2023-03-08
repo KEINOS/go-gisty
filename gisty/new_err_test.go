@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/KENOS/go-gisty/gisty"
+	"github.com/KEINOS/go-gisty/gisty"
 	"github.com/stretchr/testify/require"
 )
 

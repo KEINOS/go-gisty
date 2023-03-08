@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/KENOS/go-gisty/gisty"
+	"github.com/KEINOS/go-gisty/gisty"
 	"github.com/cli/cli/v2/pkg/cmd/api"
 	"github.com/cli/cli/v2/pkg/cmd/gist/list"
 )

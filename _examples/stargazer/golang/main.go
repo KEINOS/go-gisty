@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/KENOS/go-gisty/gisty"
+	"github.com/KEINOS/go-gisty/gisty"
 )
 
 const gistIDDefault = "5b10b34f87955dfc86d310cd623a61d1"
