@@ -2,8 +2,8 @@ package gisty
 
 import "fmt"
 
-// fmtArgs is a helper function to format the given arguments. It is a shorthand
-// for fmt.Sprintf and fmt.Sprint arguments.
+// fmtArgs is a shorthand for fmt.Sprintf and fmt.Sprint arguments. It is a helper
+// function to format the given arguments.
 //
 // If the inputs is empty, it returns an empty string.
 // If the inputs has only one element, it returns the string representation of
