@@ -26,6 +26,7 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
 	"github.com/cli/cli/v2/pkg/cmd/gist/list"
 	"github.com/cli/cli/v2/pkg/cmd/gist/view"
+	"github.com/cli/cli/v2/pkg/cmd/repo/sync"
 	"github.com/cli/cli/v2/pkg/cmdutil"
 	"github.com/cli/cli/v2/pkg/iostreams"
 )
@@ -65,6 +66,7 @@ type AltFunc struct {
 	List      func(*list.ListOptions) error
 	Read      func(*view.ViewOptions) error
 	Stargazer func(*api.ApiOptions) error
+	Update    func(*sync.SyncOptions) error
 }
 
 // ----------------------------------------------------------------------------
@@ -88,6 +90,7 @@ func NewGisty() *Gisty {
 			List:      nil,
 			Read:      nil,
 			Stargazer: nil,
+			Update:    nil,
 		},
 		Factory:      cmdFactory,
 		Stdin:        stdin,
