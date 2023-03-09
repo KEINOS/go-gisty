@@ -17,13 +17,11 @@ import "github.com/KEINOS/go-gisty/gisty"
 - [x] CRUD
   - [x] `Gisty.Create()` ..... Create a new gist with specified files to GitHub.
   - [x] `Gisty.Read()` ....... Get a content of a gist from GitHub.
-  - [x] `Gisty.Update()` ..... Push the local changes to the gist on GitHub.
+  - [x] `Gisty.Update()` ..... Syncs the local changes to the gist on GitHub.
   - [x] `Gisty.Delete()` ..... Delete a specified gist from GitHub.
 - [x] `Gisty.Clone()` ........ Clone a specified gist in GitHub to local.
 - [x] `Gisty.List()` ......... List gists in GitHub.
 - [x] `Gisty.Stargazer()` .... Get number of stars of a specified gist in GitHub.
-- [ ] `Gisty.ListCloned()` ... List gists in local.
-- [ ] `Gisty.Edit()` ......... Edit a specified gist (Probably, will not be implemented. Out of scope.).
 
 > __Note__ : This package is a spin-off of the [`gist` subcommand](https://github.com/cli/cli/tree/trunk/pkg/cmd/gist) from the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli) and is intended to provide a **similar functionality as the `gh gist` command in Go applications**.
 >
@@ -31,37 +29,60 @@ import "github.com/KEINOS/go-gisty/gisty"
 
 ```go
 func Example() {
-    // Create a new Gisty instance.
-    obj := gisty.NewGisty()
+  // Create a new Gisty instance.
+  obj := gisty.NewGisty()
 
-    // The below line is equivalent to:
-    //   gh gist list --public --limit 10
-    args := gisty.ListArgs{
-        Limit:      10,
-        OnlyPublic: true,  // If both OnlyPublic and OnlySecret are true,
-        OnlySecret: false, // OnlySecret is prior.
-    }
+  // The below line is equivalent to:
+  //   gh gist list --public --limit 10
+  args := gisty.ListArgs{
+    Limit:      10,
+    OnlyPublic: true,  // If both OnlyPublic and OnlySecret are true,
+    OnlySecret: false, // OnlySecret is prior.
+  }
 
-    items, err := obj.List(args)
-    if err != nil {
-        log.Fatal(err)
-    }
+  items, err := obj.List(args)
+  if err != nil {
+    log.Fatal(err)
+  }
 
-    // Print the fields of the first item
-    firstItem := items[0]
+  // Print the fields of the first item
+  firstItem := items[0]
 
-    fmt.Println("GistID:", firstItem.GistID)
-    fmt.Println("Description:", firstItem.Description)
-    fmt.Println("Number of files:", firstItem.Files)
-    fmt.Println("Is public gist:", firstItem.IsPublic)
-    fmt.Println("Updated at:", firstItem.UpdatedAt.String())
+  fmt.Println("GistID:", firstItem.GistID)
+  fmt.Println("Description:", firstItem.Description)
+  fmt.Println("Number of files:", firstItem.Files)
+  fmt.Println("Is public gist:", firstItem.IsPublic)
+  fmt.Println("Updated at:", firstItem.UpdatedAt.String())
+  // Output:
+  // GistID: e915aa8c01dd438e3ffd79b05f15a4ff
+  // Description: Title of gist item 1
+  // Number of files: 1
+  // Is public gist: true
+  // Updated at: 2022-04-18 03:04:38 +0000 UTC
+}
+```
 
-    // Output:
-    // GistID: e915aa8c01dd438e3ffd79b05f15a4ff
-    // Description: Title of gist item 1
-    // Number of files: 1
-    // Is public gist: true
-    // Updated at: 2022-04-18 03:04:38 +0000 UTC
+```go
+const gistIDDefault = "5b10b34f87955dfc86d310cd623a61d1"
+
+func main() {
+  // Get the gist ID from the first argument or use the default one.
+  gistID := gistIDDefault
+
+  if len(os.Args) > 1 {
+    gistID = gisty.SanitizeGistID(os.Args[1])
+  }
+
+  // Instantiate a new Gisty object.
+  obj := gisty.NewGisty()
+
+  // Get the number of stars of the gist.
+  count, err := obj.Stargazer(gistID)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  fmt.Printf("ID: %s, STARS: %v\n", gistID, count)
 }
 ```
 
