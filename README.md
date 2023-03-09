@@ -64,3 +64,7 @@ func Example() {
     // Updated at: 2022-04-18 03:04:38 +0000 UTC
 }
 ```
+
+- View more examples @ pkg.go.dev
+  - [function/method](https://pkg.go.dev/github.com/KEINOS/go-gisty/gisty#pkg-examples)
+  - [application](https://pkg.go.dev/github.com/KEINOS/go-gisty/_examples)
