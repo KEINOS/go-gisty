@@ -1,0 +1,66 @@
+# =============================================================================
+#  Docker Compose file for testing on Go versions 1.19 to latest.
+# =============================================================================
+#  This file is somewhat similar to makefile, but for Docker.
+#
+# Notes:
+#  It is recommended to run specifying a specific service and not at once.
+#
+#  Since the service `tidy` will update/re-write the "go.mod" file to the latest
+#  version, during it's process the "go.mod" file will be gone temporarily. Thus,
+#  it will cause failure in the other containers becaue of missing "go.mod" file.
+#
+# Recommended usage:
+#   docker compose --file ./.github/docker-compose.yml run tidy
+#   docker compose --file ./.github/docker-compose.yml run v1_19
+#   docker compose --file ./.github/docker-compose.yml run latest
+#
+# Not recommended usage:
+#   docker compose --file ./.github/docker-compose.yml up
+version: "3.9"
+
+volumes:
+  GO_MOD_CACHE:
+
+services:
+  # Service tidy updates the module versions in go.mod to the latest.
+  tidy:
+    build:
+      context: ..
+      dockerfile: ./.github/Dockerfile
+      args:
+        VARIANT: 1.19-alpine
+    volumes:
+      - ..:/workspaces
+      - GO_MOD_CACHE:/go/pkg/mod
+    entrypoint: [ "./.github/update-go-mod.sh" ]
+  # Service v1_19 runs the tests on Go v1.19.
+  v1_19:
+    build:
+      context: ..
+      dockerfile: ./.github/Dockerfile
+      args:
+        VARIANT: 1.19-alpine
+    volumes:
+      - ..:/workspaces
+      - GO_MOD_CACHE:/go/pkg/mod
+  # Service v1_20 runs the tests on Go v1.20.
+  v1_20:
+    build:
+      context: ..
+      dockerfile: ./.github/Dockerfile
+      args:
+        VARIANT: 1.20-alpine
+    volumes:
+      - ..:/workspaces
+      - GO_MOD_CACHE:/go/pkg/mod
+  # Service latest runs the tests on latest Go docker image.
+  latest:
+    build:
+      context: ..
+      dockerfile: ./.github/Dockerfile
+      args:
+        VARIANT: alpine
+    volumes:
+      - ..:/workspaces
+      - GO_MOD_CACHE:/go/pkg/mod
