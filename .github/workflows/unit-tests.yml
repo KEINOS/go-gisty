@@ -1,0 +1,100 @@
+# This workflow runs:
+# - Unit tests on Go 1.18, 1.19, 1.20, and latest Go.
+# - Lint and static analysis on latest Go.
+# - Vulnerability scan on latest Go.
+#
+# This workflow caches images built with Docker and docker-compose to speed up its execution.
+name: UnitTests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PATH_CACHE: /tmp/docker-img-arch
+
+jobs:
+  go:
+    name: Run tests on Go via container
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Create image tag from file hash
+        uses: KEINOS/gh-action-hash-for-cache@main
+        id: imagetag
+        # Udate the hash if any of the below file is changed or the month has changed.
+        with:
+          path: |
+            ./go.mod
+            ./.github/Dockerfile
+            ./.github/docker-compose.yml
+            ./.github/workflows/unit-tests.yml
+          variant: $(TZ=UTC-9 date '+%Y%m')
+
+      - name: Enable Cache
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.PATH_CACHE }}
+          key: ${{ steps.imagetag.outputs.hash }}
+
+      - name: Load cached Docker images if any
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: |
+          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_18_1.tar
+          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_19_1.tar
+          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_20_1.tar
+          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_latest_1.tar
+          : # Lint uses an existing image. Do not load
+          : # docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_lint_1.tar
+          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_vuln_1.tar
+
+      - name: Pull base images if no-cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          : # Pull images one-by-one for stability
+          docker pull golang:1.18-alpine
+          docker pull golang:1.19-alpine
+          docker pull golang:1.20-alpine
+          docker pull golang:alpine
+          docker pull golangci/golangci-lint
+
+      - name: Build Docker images if no-cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          docker-compose --file ./.github/docker-compose.yml build v1_18
+          docker-compose --file ./.github/docker-compose.yml build v1_19
+          docker-compose --file ./.github/docker-compose.yml build v1_20
+          docker-compose --file ./.github/docker-compose.yml build latest
+          docker-compose --file ./.github/docker-compose.yml build lint
+          docker-compose --file ./.github/docker-compose.yml build vuln
+
+      - name: Run tests on Go 1.18
+        run: docker-compose --file ./.github/docker-compose.yml run v1_18
+      - name: Run tests on Go 1.19
+        run: docker-compose --file ./.github/docker-compose.yml run v1_19
+      - name: Run tests on Go 1.20
+        run: docker-compose --file ./.github/docker-compose.yml run v1_20
+      - name: Run tests on latest Go
+        run: docker-compose --file ./.github/docker-compose.yml run latest
+      - name: Run lint and static analysis
+        run: docker-compose --file ./.github/docker-compose.yml run lint
+      - name: Run vulnerability scan
+        run: docker-compose --file ./.github/docker-compose.yml run vuln
+
+      - name: Save/export built images to cache dir if no-cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}
+          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_18_1.tar github_v1_18:latest
+          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_19_1.tar github_v1_19:latest
+          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_20_1.tar github_v1_20:latest
+          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_latest_1.tar github_latest:latest
+          : # Lint uses an existing image. Do not save
+          : # docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_lint_1.tar github_lint:latest
+          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_vuln_1.tar github_vuln:latest
