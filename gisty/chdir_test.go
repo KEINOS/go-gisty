@@ -7,11 +7,17 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestGisty_golden(t *testing.T) {
-	t.Parallel()
+//nolint:paralleltest // disable paralleling due to chdir on Windows
+func TestChDir_golden(t *testing.T) {
+	pathDirOrig, err := os.Getwd()
+	require.NoError(t, err, "failed to get current working directory during test setup")
 
-	pathDirOrig := chDirCleanUp(t)
 	pathDirTmp := t.TempDir()
+
+	defer func() {
+		// Change the working directory back to the original working directory.
+		require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
+	}()
 
 	// Change the working directory to the temporary directory.
 	returnPath, err := ChDir(pathDirTmp)
@@ -30,26 +36,4 @@ func TestGisty_golden(t *testing.T) {
 	// and os.Getwd() returns the path without the "/private" prefix.
 	require.Contains(t, pathDirCurr, pathDirTmp,
 		"current working directory is not the temporary directory")
-}
-
-// ----------------------------------------------------------------------------
-//  Helper functions
-// ----------------------------------------------------------------------------
-
-// chDirCleanUp is a helper function that ensures the working directory is changed
-// back to the original working directory.
-//
-// The returned string is the original working directory to change back to.
-func chDirCleanUp(t *testing.T) string {
-	t.Helper()
-
-	pathDirOrig, err := os.Getwd()
-	require.NoError(t, err, "failed to get current working directory during test setup")
-
-	t.Cleanup(func() {
-		// Change the working directory back to the original working directory.
-		require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
-	})
-
-	return pathDirOrig
 }

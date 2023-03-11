@@ -1,0 +1,24 @@
+# This workflow runs:
+# - Lint and static analysis on latest Go.
+name: GolangCI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  go:
+    name: Run tests on Go via container
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Pull base image ahead for stability
+        run: docker pull golangci/golangci-lint
+
+      - name: Run lint and static analysis
+        run: docker-compose --file ./.github/docker-compose.yml run lint

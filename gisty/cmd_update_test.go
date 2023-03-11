@@ -1,6 +1,7 @@
 package gisty
 
 import (
+	"os"
 	"testing"
 
 	"github.com/cli/cli/v2/pkg/cmd/repo/sync"
@@ -14,7 +15,7 @@ import (
 
 //nolint:paralleltest // do not parallelize due to temporary directory change
 func TestGisty_Update_golden(t *testing.T) {
-	_ = chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
+	chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
 
 	// Instantiate the object.
 	obj := NewGisty()
@@ -39,7 +40,7 @@ func TestGisty_Update_golden(t *testing.T) {
 
 //nolint:paralleltest // do not parallelize due to temporary directory change
 func TestGisty_Update_golden_with_flags(t *testing.T) {
-	_ = chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
+	chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
 
 	// Instantiate the object.
 	obj := NewGisty()
@@ -88,7 +89,7 @@ func TestGisty_Update_golden_with_flags(t *testing.T) {
 
 //nolint:paralleltest // do not parallelize due to temporary directory change
 func TestGisty_Update_execute_success_but_wrong_output(t *testing.T) {
-	_ = chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
+	chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
 
 	// Instantiate the object.
 	obj := NewGisty()
@@ -116,7 +117,7 @@ func TestGisty_Update_execute_success_but_wrong_output(t *testing.T) {
 
 //nolint:paralleltest // do not parallelize due to temporary directory change
 func TestGisty_Update_fails_execute(t *testing.T) {
-	_ = chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
+	chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
 
 	// Instantiate the object.
 	obj := NewGisty()
@@ -139,7 +140,7 @@ func TestGisty_Update_fails_execute(t *testing.T) {
 
 //nolint:paralleltest // do not parallelize due to temporary directory change
 func TestGisty_Update_fail_to_change_dir(t *testing.T) {
-	_ = chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
+	chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
 
 	// Backup and defer restore the original osChdir function.
 	oldOSChdir := osChdir
@@ -168,7 +169,7 @@ func TestGisty_Update_fail_to_change_dir(t *testing.T) {
 
 //nolint:paralleltest // do not parallelize due to temporary directory change
 func TestGisty_Update_fail_to_get_wd(t *testing.T) {
-	_ = chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
+	chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
 
 	// Backup and defer restore the original osGetwd function.
 	oldOSGetwd := osGetwd
@@ -197,7 +198,7 @@ func TestGisty_Update_fail_to_get_wd(t *testing.T) {
 
 //nolint:paralleltest // do not parallelize due to temporary directory change
 func TestGisty_Update_target_dir_is_empty(t *testing.T) {
-	_ = chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
+	chDirCleanUp(t) // defer change working dir back to original. see chdir_test.go
 
 	// Instantiate the object.
 	obj := NewGisty()
@@ -209,4 +210,22 @@ func TestGisty_Update_target_dir_is_empty(t *testing.T) {
 	require.Error(t, err, "expected error when target dir is empty")
 	assert.Contains(t, err.Error(), "path to local repository is required",
 		"it should contain the error reason")
+}
+
+// ----------------------------------------------------------------------------
+//  Helper functions
+// ----------------------------------------------------------------------------
+
+// chDirCleanUp is a helper function that ensures the working directory is changed
+// back to the original working directory.
+func chDirCleanUp(t *testing.T) {
+	t.Helper()
+
+	pathDirOrig, err := os.Getwd()
+	require.NoError(t, err, "failed to get current working directory during test setup")
+
+	t.Cleanup(func() {
+		// Change the working directory back to the original working directory.
+		require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
+	})
 }
