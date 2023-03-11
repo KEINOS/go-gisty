@@ -88,7 +88,7 @@ func readRun(opts *view.ViewOptions) (*shared.Gist, error) {
 		return nil, WrapIfErr(err, "failed to read option config")
 	}
 
-	hostname, _ := cfg.DefaultHost()
+	hostname, _ := cfg.Authentication().DefaultHost()
 
 	gist, err := sharedGetGist(client, hostname, gistID)
 	if err != nil {
