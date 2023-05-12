@@ -7,7 +7,7 @@
 ## Usage
 
 ```go
-go get "github.com/KIENOS/go-gisty"
+go get "github.com/KEINOS/go-gisty"
 ```
 
 ```go
