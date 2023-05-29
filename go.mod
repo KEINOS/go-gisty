@@ -3,6 +3,7 @@ module github.com/KEINOS/go-gisty
 go 1.18
 
 require (
+	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/alessio/shellescape v1.4.1
 	github.com/cli/cli/v2 v2.24.3
 	github.com/pkg/errors v0.9.1
@@ -11,7 +12,6 @@ require (
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.6 // indirect
-	github.com/MakeNowJust/heredoc v1.0.0 // indirect
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect

@@ -22,8 +22,9 @@ import "github.com/KEINOS/go-gisty/gisty"
   - [x] `Gisty.Update()` ..... Syncs the local changes to the gist on GitHub.
   - [x] `Gisty.Delete()` ..... Delete a specified gist from GitHub.
 - [x] `Gisty.Clone()` ........ Clone a specified gist in GitHub to local.
-- [x] `Gisty.List()` ......... List gists in GitHub.
+- [x] `Gisty.List()` ......... Get the list of gists in the GitHub account.
 - [x] `Gisty.Stargazer()` .... Get number of stars of a specified gist in GitHub.
+- [x] `Gisty.Comments()` ..... Get comments of a specified gist in GitHub.
 
 > __Note__ : This package is a spin-off of the [`gist` subcommand](https://github.com/cli/cli/tree/trunk/pkg/cmd/gist) from the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli) and is intended to provide a **similar functionality as the `gh gist` command in Go applications**.
 >
@@ -115,6 +116,11 @@ func main() {
     - Reproducible sample code is required to help us to fix the issue.
 - Help wanted:
   - [GitHub Issues](https://github.com/KEINOS/go-gisty/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+
+## TODOs
+
+- [x] ~~Retrieve comments in a gist~~ [[#2](https://github.com/KEINOS/go-gisty/issues/2)]
+- [ ] Simple method to fetch a file in a gist [[#3](https://github.com/KEINOS/go-gisty/issues/3)]
 
 ## License
 

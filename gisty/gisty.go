@@ -4,7 +4,7 @@ Package gisty provides a similar functionality of `gh gist` command.
 It aims to provide a simple and easy to use interface to interact with GitHub
 Gists in the Go applications.
 
-## Note
+- Note
 
 In this package, the environment variable "GH_TOKEN" or "GITHUB_TOKEN" must be
 set to the "personal access token" of the GitHub API. (`gist` scope required)
@@ -12,6 +12,20 @@ set to the "personal access token" of the GitHub API. (`gist` scope required)
 For GitHub Enterprise users, the environment variable "GH_ENTERPRISE_TOKEN" or
 "GITHUB_ENTERPRISE_TOKEN" must also be set with the GitHub API
 "authentication token".
+
+- Tips and info to implement Gisty commands
+
+The basic of Gisty is the wrapper of the sub command `gist` of `gh` application
+which is a Cobra instance from the `cli/cli` package. Gisty object receives the
+command arguments and passes them to Cobra command.
+
+Commands that are not supported by `gh`, `Stargazer` for example, are implemented
+via `api` sub command of `cli/cli`("github.com/cli/cli/v2/pkg/cmd/api").
+This api package supports GitHub GraphQL API (v4) which supports more features
+than the REST API (v3) that `gh` uses.
+
+- GraphQL API documentation: https://docs.github.com/en/graphql
+- GraphQL Explorer: https://docs.github.com/ja/graphql/overview/explorer
 */
 package gisty
 
@@ -53,6 +67,8 @@ type Gisty struct {
 	BuildDate string
 	// BuildVersion is the version of the binary.
 	BuildVersion string
+	// MaxComment is the max number of comments in a gist to be fetched.
+	MaxComment int
 }
 
 // AltFunc is a set of alternative functions to be used in the commands.
@@ -61,6 +77,7 @@ type Gisty struct {
 // it can be used to overrride the default behavior of the commands.
 type AltFunc struct {
 	Clone     func(*clone.CloneOptions) error
+	Comments  func(*api.ApiOptions) error
 	Create    func(*create.CreateOptions) error
 	Delete    func(*delete.DeleteOptions) error
 	List      func(*list.ListOptions) error
@@ -72,6 +89,8 @@ type AltFunc struct {
 // ----------------------------------------------------------------------------
 //  Constructor
 // ----------------------------------------------------------------------------
+
+const MaxCommentDefault = 100
 
 // NewGisty returns a new instance of Gisty.
 func NewGisty() *Gisty {
@@ -86,6 +105,7 @@ func NewGisty() *Gisty {
 		AltFunctions: AltFunc{
 			Clone:     nil,
 			Create:    nil,
+			Comments:  nil,
 			Delete:    nil,
 			List:      nil,
 			Read:      nil,
@@ -98,6 +118,7 @@ func NewGisty() *Gisty {
 		Stderr:       stderr,
 		BuildDate:    buildDate,
 		BuildVersion: buildVersion,
+		MaxComment:   MaxCommentDefault,
 	}
 }
 
