@@ -24,7 +24,7 @@ func (g *Gisty) stargazer(gistID string, runF func(*api.ApiOptions) error) (int,
 	cmdAPI := api.NewCmdApi(g.Factory, runF)
 	query := fmt.Sprintf(
 		"query { viewer { gist (name: \"%s\" ) { name, stargazerCount } } }",
-		SanitizeGistID(gistID), // avoid unwanted query to request
+		SanitizeGistID(gistID), // sanitize to avoid unwanted query to request
 	)
 	template := "{{.data.viewer.gist.stargazerCount}}"
 	argv := []string{
