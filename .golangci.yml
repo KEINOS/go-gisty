@@ -33,7 +33,7 @@ output:
 linters:
   enable-all: true
   disable:
-  # Deprecated linters
+  # Disable deprecated/abandoned linters
   - nosnakecase
   - scopelint
   - golint
@@ -43,12 +43,10 @@ linters:
   - exhaustivestruct
   - ifshort
   - maligned
-  # Disabled because of generics
-  - rowserrcheck
-  - sqlclosecheck
   - structcheck
-  - wastedassign
   # Disabled because of testing private functions
   - testpackage
   # We allow global variable for testing purposes
   - gochecknoglobals
+  # Disabled due to the use of external packages
+  - depguard

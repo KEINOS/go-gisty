@@ -17,6 +17,9 @@ fixwhere:
 download:
 	# Download all go module dependencies.
 	go mod download
+update:
+	# Update all go module dependencies.
+	./.github/update-go-mod.sh
 install:
 	# Install govulncheck if not already installed.
 	type govulncheck 2>/dev/null 1>/dev/null || go install golang.org/x/vuln/cmd/govulncheck@latest
