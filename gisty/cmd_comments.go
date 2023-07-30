@@ -7,6 +7,35 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/api"
 )
 
+// Template for the GraphQL query to get the comments in the gist.
+const tplQueryComments = `
+{
+	viewer {
+		gist(name: "%s") {
+			comments(last: %d) {
+				edges {
+					node {
+						id
+						authorAssociation
+						author {
+							avatarUrl
+							login
+						}
+						createdAt
+						publishedAt
+						lastEditedAt
+						body
+						bodyHTML
+						bodyText
+						isMinimized
+						minimizedReason
+					}
+				}
+			}
+		}
+	}
+}`
+
 // ----------------------------------------------------------------------------
 //  Dummy data for testing
 // ----------------------------------------------------------------------------
@@ -78,34 +107,6 @@ func (g *Gisty) Comments(gistID string) ([]Comment, error) {
 
 	return g.comments(gistID, g.AltFunctions.Comments)
 }
-
-const tplQueryComments = `
-{
-	viewer {
-		gist(name: "%s") {
-			comments(last: %d) {
-				edges {
-					node {
-						id
-						authorAssociation
-						author {
-							avatarUrl
-							login
-						}
-						createdAt
-						publishedAt
-						lastEditedAt
-						body
-						bodyHTML
-						bodyText
-						isMinimized
-						minimizedReason
-					}
-				}
-			}
-		}
-	}
-}`
 
 // comments is the actual function that gets the comments in the gist.
 //

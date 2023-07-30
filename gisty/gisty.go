@@ -92,26 +92,30 @@ type AltFunc struct {
 
 const MaxCommentDefault = 100
 
+// AltFuncDefault is the default set of alternative functions when NewGisty is
+// called.
+var AltFuncDefault = AltFunc{
+	Clone:     nil,
+	Create:    nil,
+	Comments:  nil,
+	Delete:    nil,
+	List:      nil,
+	Read:      nil,
+	Stargazer: nil,
+	Update:    nil,
+}
+
 // NewGisty returns a new instance of Gisty.
 func NewGisty() *Gisty {
 	buildDate := buildinfo.Date
 	buildVersion := buildinfo.Version
-	ios, stdin, stdout, stderr := iostreams.Test()
 	cmdFactory := factory.New(buildVersion)
+	ioStreams, stdin, stdout, stderr := iostreams.Test()
 
-	cmdFactory.IOStreams = ios
+	cmdFactory.IOStreams = ioStreams
 
 	return &Gisty{
-		AltFunctions: AltFunc{
-			Clone:     nil,
-			Create:    nil,
-			Comments:  nil,
-			Delete:    nil,
-			List:      nil,
-			Read:      nil,
-			Stargazer: nil,
-			Update:    nil,
-		},
+		AltFunctions: AltFuncDefault,
 		Factory:      cmdFactory,
 		Stdin:        stdin,
 		Stdout:       stdout,

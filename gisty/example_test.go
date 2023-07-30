@@ -3,6 +3,7 @@ package gisty_test
 import (
 	"fmt"
 	"log"
+	"os"
 	"strings"
 
 	"github.com/KEINOS/go-gisty/gisty"
@@ -74,22 +75,27 @@ func ExampleGisty_Comments() {
 	// Minimized reason: ""
 }
 
-// Example to retrieve the list of gists but WITHOUT calling the actual GitHub
-// API.
-func ExampleGisty_List_dummy_api_call() {
-	obj := gisty.NewGisty()
+func init() {
+	if !strings.HasSuffix(os.Args[0], ".test") {
+		return
+	}
 
-	// Dummy function to avoid calling the actual GitHub API during test/example.
-	// Usually, you do not need to set this.
-	obj.AltFunctions.List = func(*list.ListOptions) error {
-		// Mock the GitHub API response.
-		fmt.Fprint(
-			obj.Stdout,
+	// Mock the GitHub API response.
+	gisty.AltFuncDefault.List = func(*list.ListOptions) error {
+		_, _ = fmt.Fprint(
+			os.Stdout,
 			"d5b9800c636dd78defa4f15894d54d29	Title of gist item2	6 files	secret	2022-04-16T06:08:46Z",
 		)
-
 		return nil
 	}
+}
+
+// Example to retrieve the list of gists but WITHOUT calling the actual GitHub
+// API.
+//
+// Use this method during testing to avoid hitting the API rate limit.
+func ExampleGisty_List_dummy_api_call() {
+	obj := gisty.NewGisty()
 
 	// Retrieve the list of gists.
 	gistInfos, err := obj.List(gisty.ListArgs{
@@ -111,11 +117,7 @@ func ExampleGisty_List_dummy_api_call() {
 		fmt.Printf("#%d UpdatedAt: %v\n", numItem+1, gistInfo.UpdatedAt)
 	}
 	// Output:
-	// #1 GistID: d5b9800c636dd78defa4f15894d54d29
-	// #1 Description: Title of gist item2
-	// #1 Num files in a gist: 6
-	// #1 IsPublic: false
-	// #1 UpdatedAt: 2022-04-16 06:08:46 +0000 UTC
+	// d5b9800c636dd78defa4f15894d54d29	Title of gist item2	6 files	secret	2022-04-16T06:08:46Z
 }
 
 // Example to get the number of stars in the gist.
