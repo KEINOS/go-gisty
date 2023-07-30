@@ -19,18 +19,6 @@ echo '* Backup module files ...'
 cp go.mod go.mod.bak
 cp go.sum go.sum.bak
 
-# name_package="github.com/KEINOS/go-gisty"
-#
-# echo '* Create new blank go.mod ...'
-# go mod init "${name_package}"
-#
-# echo '* Add the package to the go.mod ...'
-# go get \
-# 	github.com/stretchr/testify \
-# 	github.com/cli/cli/v2 \
-# 	github.com/alessio/shellescape \
-# 	github.com/pkg/errors
-
 echo '* Updating modules ...'
 go get -u ./...
 
