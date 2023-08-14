@@ -18,7 +18,7 @@ require (
 	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/charmbracelet/glamour v0.6.0 // indirect
 	github.com/cli/browser v1.2.0 // indirect
-	github.com/cli/go-gh/v2 v2.1.0 // indirect
+	github.com/cli/go-gh/v2 v2.2.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.3 // indirect
 	github.com/danieljoos/wincred v1.2.0 // indirect
@@ -46,7 +46,7 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/rivo/tview v0.0.0-20230621164836-6cc0565babaf // indirect
+	github.com/rivo/tview v0.0.0-20230814110005-ccc2c8119703 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20230704064427-599ae7bbf278 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
