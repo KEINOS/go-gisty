@@ -19,8 +19,8 @@ github.com/charmbracelet/glamour v0.6.0 h1:wi8fse3Y7nfcabbbDuwolqTqMQPMnVPeZhDM2
 github.com/charmbracelet/glamour v0.6.0/go.mod h1:taqWV4swIMMbWALc0m7AfE9JkPSU8om2538k9ITBxOc=
 github.com/cli/browser v1.2.0 h1:yvU7e9qf97kZqGFX6n2zJPHsmSObY9ske+iCvKelvXg=
 github.com/cli/browser v1.2.0/go.mod h1:xFFnXLVcAyW9ni0cuo6NnrbCP75JxJ0RO7VtCBiH/oI=
-github.com/cli/cli/v2 v2.32.1 h1:Yda4g2mMzM0ijK3kpzxAlCDrKM2S3EY3jTpgAcfnmdg=
-github.com/cli/cli/v2 v2.32.1/go.mod h1:miPtgEmgzxcTvjrq8XZ32VvQO6eKr7lCI8fx13L//64=
+github.com/cli/cli/v2 v2.33.0 h1:k64fxtsnhFzVQtMfNw+UgHwyaPaVka6aDWvberKN45c=
+github.com/cli/cli/v2 v2.33.0/go.mod h1:ISe74MoEosR0o5rKdiD4hTWzSvy0KoQt/tghxXpU8cI=
 github.com/cli/go-gh/v2 v2.2.0 h1:Mp5WYfe5bjSSfhygV/KjmPrBctAnEgAtBEd37C/2Mao=
 github.com/cli/go-gh/v2 v2.2.0/go.mod h1:DwqlWB1TCBcKmDt/9/81EnlbGG7elLoevF4ypt5BnzE=
 github.com/cli/safeexec v1.0.1 h1:e/C79PbXF4yYTN/wauC4tviMxEV13BwljGj0N9j+N00=
