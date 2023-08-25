@@ -18,7 +18,7 @@ require (
 	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/charmbracelet/glamour v0.6.0 // indirect
 	github.com/cli/browser v1.2.0 // indirect
-	github.com/cli/go-gh/v2 v2.2.0 // indirect
+	github.com/cli/go-gh/v2 v2.3.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.3 // indirect
 	github.com/danieljoos/wincred v1.2.0 // indirect
