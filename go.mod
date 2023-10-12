@@ -18,14 +18,14 @@ require (
 	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/charmbracelet/glamour v0.6.0 // indirect
 	github.com/cli/browser v1.3.0 // indirect
-	github.com/cli/go-gh/v2 v2.3.0 // indirect
+	github.com/cli/go-gh/v2 v2.4.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
 	github.com/danieljoos/wincred v1.2.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/fatih/color v1.15.0 // indirect
-	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
+	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gdamore/encoding v1.0.0 // indirect
 	github.com/gdamore/tcell/v2 v2.6.0 // indirect
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
@@ -41,7 +41,7 @@ require (
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
-	github.com/microcosm-cc/bluemonday v1.0.25 // indirect
+	github.com/microcosm-cc/bluemonday v1.0.26 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
