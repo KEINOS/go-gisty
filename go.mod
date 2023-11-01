@@ -1,11 +1,13 @@
 module github.com/KEINOS/go-gisty
 
-go 1.18
+go 1.21
+
+toolchain go1.21.3
 
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/alessio/shellescape v1.4.2
-	github.com/cli/cli/v2 v2.36.0
+	github.com/cli/cli/v2 v2.37.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.8.4
 )
@@ -38,7 +40,7 @@ require (
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.19 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/microcosm-cc/bluemonday v1.0.26 // indirect
@@ -46,7 +48,7 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/rivo/tview v0.0.0-20231007183732-6c844bdc5f7a // indirect
+	github.com/rivo/tview v0.0.0-20231031172508-2dfe06011790 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20230704064427-599ae7bbf278 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
@@ -54,7 +56,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/objx v0.5.1 // indirect
 	github.com/thlib/go-timezone-local v0.0.0-20210907160436-ef149e42d28e // indirect
-	github.com/yuin/goldmark v1.5.6 // indirect
+	github.com/yuin/goldmark v1.6.0 // indirect
 	github.com/yuin/goldmark-emoji v1.0.2 // indirect
 	github.com/zalando/go-keyring v0.2.3 // indirect
 	golang.org/x/net v0.17.0 // indirect

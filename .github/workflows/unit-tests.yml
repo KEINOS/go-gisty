@@ -47,34 +47,24 @@ jobs:
       - name: Load cached Docker images if any
         if: steps.cache.outputs.cache-hit == 'true'
         run: |
-          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_18_1.tar
-          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_19_1.tar
-          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_20_1.tar
+          docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_min_1.tar
           docker load --input ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_latest_1.tar
 
       - name: Pull base images if no-cache
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          : # Pull images one-by-one for stability
-          docker pull golang:1.18-alpine
-          docker pull golang:1.19-alpine
-          docker pull golang:1.20-alpine
+          : # Pull images one-by-one for stability. Minimum and latest supported versions.
+          docker pull golang:1.21-alpine
           docker pull golang:alpine
 
       - name: Build Docker images if no-cache
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          docker-compose --file ./.github/docker-compose.yml build v1_18
-          docker-compose --file ./.github/docker-compose.yml build v1_19
-          docker-compose --file ./.github/docker-compose.yml build v1_20
+          docker-compose --file ./.github/docker-compose.yml build min
           docker-compose --file ./.github/docker-compose.yml build latest
 
-      - name: Run tests on Go 1.18
-        run: docker-compose --file ./.github/docker-compose.yml run v1_18
-      - name: Run tests on Go 1.19
-        run: docker-compose --file ./.github/docker-compose.yml run v1_19
-      - name: Run tests on Go 1.20
-        run: docker-compose --file ./.github/docker-compose.yml run v1_20
+      - name: Run tests on Go 1.21 (minimum supported version)
+        run: docker-compose --file ./.github/docker-compose.yml run min
       - name: Run tests on latest Go
         run: docker-compose --file ./.github/docker-compose.yml run latest
 
@@ -82,7 +72,5 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           mkdir -p ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}
-          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_18_1.tar github_v1_18:latest
-          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_19_1.tar github_v1_19:latest
-          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_v1_20_1.tar github_v1_20:latest
+          docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_min_1.tar github_min:latest
           docker save --output ${{ env.PATH_CACHE }}/${{ steps.imagetag.outputs.hash }}/github_latest_1.tar github_latest:latest
