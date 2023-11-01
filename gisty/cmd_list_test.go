@@ -82,7 +82,7 @@ func Test_parseGistInfo_golden(t *testing.T) {
 	} {
 		result, err := parseGistInfo(test.input)
 		require.NoError(t, err)
-		require.Equal(t, 1, len(result))
+		require.Len(t, result, 1)
 
 		require.Equal(t, test.gistID, result[0].GistID)
 		require.Equal(t, test.description, result[0].Description)

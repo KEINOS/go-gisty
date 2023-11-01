@@ -49,5 +49,5 @@ func ExampleNewErr() {
 func TestNewErr(t *testing.T) {
 	t.Parallel()
 
-	require.Nil(t, gisty.NewErr(), "empty args should return nil")
+	require.NoError(t, gisty.NewErr(), "empty args should return nil")
 }

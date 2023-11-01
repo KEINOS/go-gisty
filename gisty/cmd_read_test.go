@@ -49,10 +49,10 @@ func TestGisty_Read_golden(t *testing.T) {
 	gist, err := obj.Read("https://gist.github.com/5b10b34f87955dfc86d310cd623a61d1")
 
 	require.NoError(t, err)
+	assert.Len(t, gist.Files, 1)
 	assert.Equal(t, "5b10b34f87955dfc86d310cd623a61d1", gist.ID)
 	assert.Equal(t, "this is a dummy gist", gist.Description)
 	assert.Equal(t, "https://gist.github.com/5b10b34f87955dfc86d310cd623a61d1", gist.HTMLURL)
-	assert.Equal(t, 1, len(gist.Files))
 	assert.Equal(t, "file1.txt", gist.Files["file1.txt"].Filename)
 	assert.Equal(t, "text/plain", gist.Files["file1.txt"].Type)
 	assert.Equal(t, "Text", gist.Files["file1.txt"].Language)
