@@ -2,7 +2,7 @@ module github.com/KEINOS/go-gisty
 
 go 1.21
 
-toolchain go1.21.3
+toolchain go1.21.4
 
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
