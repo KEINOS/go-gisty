@@ -7,7 +7,7 @@ toolchain go1.21.4
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/alessio/shellescape v1.4.2
-	github.com/cli/cli/v2 v2.40.1
+	github.com/cli/cli/v2 v2.41.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.8.4
 )
@@ -59,7 +59,7 @@ require (
 	github.com/yuin/goldmark v1.6.0 // indirect
 	github.com/yuin/goldmark-emoji v1.0.2 // indirect
 	github.com/zalando/go-keyring v0.2.3 // indirect
-	golang.org/x/net v0.19.0 // indirect
+	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/oauth2 v0.10.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
 	golang.org/x/sys v0.16.0 // indirect
