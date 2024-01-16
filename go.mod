@@ -7,7 +7,7 @@ toolchain go1.21.4
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/alessio/shellescape v1.4.2
-	github.com/cli/cli/v2 v2.42.0
+	github.com/cli/cli/v2 v2.42.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.8.4
 )
@@ -48,7 +48,7 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/rivo/tview v0.0.0-20240115061330-ed5968603a5f // indirect
+	github.com/rivo/tview v0.0.0-20240116070845-bf8f1c43e46c // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20231126234147-1cffa1f02456 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
