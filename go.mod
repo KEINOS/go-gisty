@@ -49,7 +49,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/tview v0.0.0-20240122063236-8526c9fe1b54 // indirect
-	github.com/rivo/uniseg v0.4.4 // indirect
+	github.com/rivo/uniseg v0.4.5 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20240120211514-18a1ae0e79dc // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
