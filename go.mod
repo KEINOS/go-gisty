@@ -7,7 +7,7 @@ toolchain go1.21.4
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/alessio/shellescape v1.4.2
-	github.com/cli/cli/v2 v2.43.1
+	github.com/cli/cli/v2 v2.44.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.8.4
 )
