@@ -25,7 +25,7 @@ require (
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
 	github.com/danieljoos/wincred v1.2.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dlclark/regexp2 v1.10.0 // indirect
+	github.com/dlclark/regexp2 v1.11.0 // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gdamore/encoding v1.0.0 // indirect
