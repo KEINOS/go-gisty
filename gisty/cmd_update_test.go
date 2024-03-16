@@ -149,7 +149,7 @@ func TestGisty_Update_fail_to_change_dir(t *testing.T) {
 	}()
 
 	// Mock osChdir to return an error.
-	osChdir = func(path string) error {
+	osChdir = func(_ string) error {
 		return NewErr("forced error")
 	}
 

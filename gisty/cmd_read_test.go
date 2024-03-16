@@ -19,7 +19,7 @@ func TestGisty_Read_golden(t *testing.T) {
 	}()
 
 	// Mock the shared.GetGist(sharedGetGist) function and return a dummy gist.
-	sharedGetGist = func(client *http.Client, hostname string, gistID string) (*shared.Gist, error) {
+	sharedGetGist = func(_ *http.Client, _ string, gistID string) (*shared.Gist, error) {
 		// Dummy files in a gist.
 		files := map[string]*shared.GistFile{
 			"file1.txt": {
@@ -83,7 +83,7 @@ func TestGisty_Read_invalid_url(t *testing.T) {
 	}()
 
 	// Mock the shared.GetGist(sharedGetGist) function and return a dummy gist.
-	sharedGetGist = func(client *http.Client, hostname string, gistID string) (*shared.Gist, error) {
+	sharedGetGist = func(_ *http.Client, _ string, _ string) (*shared.Gist, error) {
 		return new(shared.Gist), nil
 	}
 
@@ -107,7 +107,7 @@ func TestGisty_Read_empty_gist(t *testing.T) {
 	}()
 
 	// Mock the shared.GetGist(sharedGetGist) function and return a dummy gist.
-	sharedGetGist = func(client *http.Client, hostname string, gistID string) (*shared.Gist, error) {
+	sharedGetGist = func(_ *http.Client, _ string, _ string) (*shared.Gist, error) {
 		return new(shared.Gist), nil
 	}
 
@@ -157,7 +157,7 @@ func Test_readRun_fail_create_config(t *testing.T) {
 	}()
 
 	// Mock the shared.GetGist(sharedGetGist) function and return a dummy gist.
-	sharedGetGist = func(client *http.Client, hostname string, gistID string) (*shared.Gist, error) {
+	sharedGetGist = func(_ *http.Client, _ string, _ string) (*shared.Gist, error) {
 		return new(shared.Gist), nil
 	}
 
@@ -181,7 +181,7 @@ func Test_readRun_fail_get_gist(t *testing.T) {
 	}()
 
 	// Mock the shared.GetGist(sharedGetGist) function and return a dummy gist.
-	sharedGetGist = func(client *http.Client, hostname string, gistID string) (*shared.Gist, error) {
+	sharedGetGist = func(_ *http.Client, _ string, _ string) (*shared.Gist, error) {
 		return nil, NewErr("forced error")
 	}
 
