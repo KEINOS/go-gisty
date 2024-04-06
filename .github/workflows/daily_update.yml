@@ -22,9 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v4
         with:
           go-version: '1'
           check-latest: true
@@ -33,7 +33,7 @@ jobs:
         run: make update
 
       - name: Create pull request on any file change
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v6
         with:
             token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
             branch: update-patch
