@@ -2,6 +2,8 @@ module github.com/KEINOS/go-gisty
 
 go 1.22
 
+toolchain go1.21.4
+
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/alessio/shellescape v1.4.2
