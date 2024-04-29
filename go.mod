@@ -19,8 +19,10 @@ require (
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/charmbracelet/glamour v0.7.0 // indirect
+	github.com/charmbracelet/lipgloss v0.10.1-0.20240413172830-d0be07ea6b9c // indirect
+	github.com/charmbracelet/x/exp/term v0.0.0-20240425164147-ba2a9512b05f // indirect
 	github.com/cli/browser v1.3.0 // indirect
-	github.com/cli/go-gh/v2 v2.8.0 // indirect
+	github.com/cli/go-gh/v2 v2.9.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
 	github.com/danieljoos/wincred v1.2.1 // indirect
@@ -49,9 +51,9 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/rivo/tview v0.0.0-20240426173458-c766eefb3803 // indirect
+	github.com/rivo/tview v0.0.0-20240429185930-6e1e54f465d4 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/shurcooL/githubv4 v0.0.0-20240120211514-18a1ae0e79dc // indirect
+	github.com/shurcooL/githubv4 v0.0.0-20240429030203-be2daab69064 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
