@@ -7,7 +7,7 @@ toolchain go1.22.2
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/alessio/shellescape v1.4.2
-	github.com/cli/cli/v2 v2.49.0
+	github.com/cli/cli/v2 v2.49.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.9.0
 )
@@ -20,7 +20,7 @@ require (
 	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/charmbracelet/glamour v0.7.0 // indirect
 	github.com/charmbracelet/lipgloss v0.10.1-0.20240413172830-d0be07ea6b9c // indirect
-	github.com/charmbracelet/x/exp/term v0.0.0-20240507171223-71e9351b56e7 // indirect
+	github.com/charmbracelet/x/exp/term v0.0.0-20240508200021-63ec5bdef608 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.9.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
