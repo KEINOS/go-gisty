@@ -20,7 +20,7 @@ require (
 	github.com/briandowns/spinner v1.23.0 // indirect
 	github.com/charmbracelet/glamour v0.7.0 // indirect
 	github.com/charmbracelet/lipgloss v0.10.1-0.20240413172830-d0be07ea6b9c // indirect
-	github.com/charmbracelet/x/exp/term v0.0.0-20240509130423-e48c874ef5d2 // indirect
+	github.com/charmbracelet/x/exp/term v0.0.0-20240510181320-e66de7a51531 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.9.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
