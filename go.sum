@@ -20,10 +20,10 @@ github.com/briandowns/spinner v1.23.0 h1:alDF2guRWqa/FOZZYWjlMIx2L6H0wyewPxo/CH4
 github.com/briandowns/spinner v1.23.0/go.mod h1:rPG4gmXeN3wQV/TsAY4w8lPdIM6RX3yqeBQJSrbXjuE=
 github.com/charmbracelet/glamour v0.7.0 h1:2BtKGZ4iVJCDfMF229EzbeR1QRKLWztO9dMtjmqZSng=
 github.com/charmbracelet/glamour v0.7.0/go.mod h1:jUMh5MeihljJPQbJ/wf4ldw2+yBP59+ctV36jASy7ps=
-github.com/charmbracelet/lipgloss v0.10.1-0.20240413172830-d0be07ea6b9c h1:0FwZb0wTiyalb8QQlILWyIuh3nF5wok6j9D9oUQwfQY=
-github.com/charmbracelet/lipgloss v0.10.1-0.20240413172830-d0be07ea6b9c/go.mod h1:EPP2QJ0ectp3zo6gx9f8oJGq8keirqPJ3XpYEI8wrrs=
-github.com/charmbracelet/x/exp/term v0.0.0-20240522154747-75cd6ffa5c81 h1:NSoVu7Vso7dDHltLoVe2s9yL4rC5EJ2LLCf2sMqL4rk=
-github.com/charmbracelet/x/exp/term v0.0.0-20240522154747-75cd6ffa5c81/go.mod h1:YBotIGhfoWhHDlnUpJMkjebGV2pdGRCn1Y4/Nk/vVcU=
+github.com/charmbracelet/lipgloss v0.11.0 h1:UoAcbQ6Qml8hDwSWs0Y1cB5TEQuZkDPH/ZqwWWYTG4g=
+github.com/charmbracelet/lipgloss v0.11.0/go.mod h1:1UdRTH9gYgpcdNN5oBtjbu/IzNKtzVtb7sqN1t9LNn8=
+github.com/charmbracelet/x/ansi v0.1.1 h1:CGAduulr6egay/YVbGc8Hsu8deMg1xZ/bkaXTPi1JDk=
+github.com/charmbracelet/x/ansi v0.1.1/go.mod h1:dk73KoMTT5AX5BsX0KrqhsTqAnhZZoCBjs7dGWp4Ktw=
 github.com/cli/browser v1.3.0 h1:LejqCrpWr+1pRqmEPDGnTZOjsMe7sehifLynZJuqJpo=
 github.com/cli/browser v1.3.0/go.mod h1:HH8s+fOAxjhQoBUAsKuPCbqUuxZDhQ2/aD+SzsEfBTk=
 github.com/cli/cli/v2 v2.49.2 h1:NJoSNKWwhIDXMRh398WGC1YzomvxepG8vMaUrHyjHxs=
