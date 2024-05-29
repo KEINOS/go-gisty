@@ -3,6 +3,7 @@
 # go-gisty
 
 `go-gisty` is a simple and easy-to-use **Go package for managing [GitHub Gists](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists#about-gists)**.
+It can retrieve the stargazers (number of stars) of a gist as well.
 
 ## Usage
 
