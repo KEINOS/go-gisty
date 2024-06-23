@@ -59,7 +59,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/thlib/go-timezone-local v0.0.2 // indirect
-	github.com/yuin/goldmark v1.7.2 // indirect
+	github.com/yuin/goldmark v1.7.3 // indirect
 	github.com/yuin/goldmark-emoji v1.0.2 // indirect
 	github.com/zalando/go-keyring v0.2.5 // indirect
 	golang.org/x/net v0.26.0 // indirect
