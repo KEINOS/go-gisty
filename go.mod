@@ -51,9 +51,9 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/rivo/tview v0.0.0-20240625185742-b0a7293b8130 // indirect
+	github.com/rivo/tview v0.0.0-20240728114935-65571ae51e71 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	github.com/shurcooL/githubv4 v0.0.0-20240429030203-be2daab69064 // indirect
+	github.com/shurcooL/githubv4 v0.0.0-20240727222349-48295856cce7 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
 	github.com/spf13/cobra v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
