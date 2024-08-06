@@ -21,4 +21,4 @@ jobs:
         run: docker pull golangci/golangci-lint
 
       - name: Run lint and static analysis
-        run: docker-compose --file ./.github/docker-compose.yml run lint
+        run: docker compose --file ./.github/docker-compose.yml run lint
