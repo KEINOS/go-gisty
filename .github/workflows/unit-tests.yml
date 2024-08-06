@@ -60,13 +60,13 @@ jobs:
       - name: Build Docker images if no-cache
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          docker-compose --file ./.github/docker-compose.yml build min
-          docker-compose --file ./.github/docker-compose.yml build latest
+          docker compose --file ./.github/docker-compose.yml build min
+          docker compose --file ./.github/docker-compose.yml build latest
 
       - name: Run tests on Go 1.22 (minimum supported version)
         run: docker-compose --file ./.github/docker-compose.yml run min
       - name: Run tests on latest Go
-        run: docker-compose --file ./.github/docker-compose.yml run latest
+        run: docker compose --file ./.github/docker-compose.yml run latest
 
       - name: Save/export built images to cache dir if no-cache
         if: steps.cache.outputs.cache-hit != 'true'
