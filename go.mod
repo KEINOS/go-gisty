@@ -50,7 +50,7 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.3-0.20240618155329-98d742f6907a // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/rivo/tview v0.0.0-20240807095714-a8dd8799d63b // indirect
+	github.com/rivo/tview v0.0.0-20240807205129-e4c497cc59ed // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20240727222349-48295856cce7 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
@@ -64,7 +64,7 @@ require (
 	golang.org/x/net v0.28.0 // indirect
 	golang.org/x/oauth2 v0.19.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.23.0 // indirect
+	golang.org/x/sys v0.24.0 // indirect
 	golang.org/x/term v0.23.0 // indirect
 	golang.org/x/text v0.17.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
