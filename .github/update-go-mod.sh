@@ -11,7 +11,7 @@
 #    See "tidy" service: ./docker-compose.yml
 # =============================================================================
 
-go_ver_min="1.22.0" # Fix issue #38, bumpup go 1.22 -> #94
+go_ver_min="1.22.5" # Fix issue #38, bumpup go 1.22 -> #94
 
 set -eu
 

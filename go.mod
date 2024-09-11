@@ -1,13 +1,13 @@
 module github.com/KEINOS/go-gisty
 
-go 1.22.0
+go 1.22.5
 
-toolchain go1.22.5
+toolchain go1.23.1
 
 require (
+	al.essio.dev/pkg/shellescape v1.5.0
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/alessio/shellescape v1.4.2
-	github.com/cli/cli/v2 v2.55.0
+	github.com/cli/cli/v2 v2.56.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.9.0
 )
@@ -15,6 +15,7 @@ require (
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7 // indirect
 	github.com/alecthomas/chroma/v2 v2.14.0 // indirect
+	github.com/alessio/shellescape v1.4.2 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/briandowns/spinner v1.23.1 // indirect
