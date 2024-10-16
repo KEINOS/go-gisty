@@ -7,7 +7,7 @@ toolchain go1.23.1
 require (
 	al.essio.dev/pkg/shellescape v1.5.1
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.58.0
+	github.com/cli/cli/v2 v2.59.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.9.0
 )
@@ -51,7 +51,7 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.3-0.20240618155329-98d742f6907a // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/rivo/tview v0.0.0-20240921122403-a64fc48d7654 // indirect
+	github.com/rivo/tview v0.0.0-20241016194232-7b80930e0d1c // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20240727222349-48295856cce7 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
@@ -59,7 +59,7 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/thlib/go-timezone-local v0.0.3 // indirect
-	github.com/yuin/goldmark v1.7.7 // indirect
+	github.com/yuin/goldmark v1.7.8 // indirect
 	github.com/yuin/goldmark-emoji v1.0.4 // indirect
 	github.com/zalando/go-keyring v0.2.5 // indirect
 	golang.org/x/net v0.30.0 // indirect
