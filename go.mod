@@ -7,7 +7,7 @@ toolchain go1.23.1
 require (
 	al.essio.dev/pkg/shellescape v1.5.1
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.59.0
+	github.com/cli/cli/v2 v2.60.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.9.0
 )
@@ -21,7 +21,7 @@ require (
 	github.com/briandowns/spinner v1.23.1 // indirect
 	github.com/charmbracelet/glamour v0.8.0 // indirect
 	github.com/charmbracelet/lipgloss v0.13.1 // indirect
-	github.com/charmbracelet/x/ansi v0.3.2 // indirect
+	github.com/charmbracelet/x/ansi v0.4.0 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.11.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
