@@ -7,7 +7,7 @@ toolchain go1.23.1
 require (
 	al.essio.dev/pkg/shellescape v1.5.1
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.60.0
+	github.com/cli/cli/v2 v2.60.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.9.0
 )
@@ -15,7 +15,6 @@ require (
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7 // indirect
 	github.com/alecthomas/chroma/v2 v2.14.0 // indirect
-	github.com/alessio/shellescape v1.4.2 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/briandowns/spinner v1.23.1 // indirect
@@ -61,7 +60,7 @@ require (
 	github.com/thlib/go-timezone-local v0.0.3 // indirect
 	github.com/yuin/goldmark v1.7.8 // indirect
 	github.com/yuin/goldmark-emoji v1.0.4 // indirect
-	github.com/zalando/go-keyring v0.2.5 // indirect
+	github.com/zalando/go-keyring v0.2.6 // indirect
 	golang.org/x/net v0.30.0 // indirect
 	golang.org/x/oauth2 v0.19.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
