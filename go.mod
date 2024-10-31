@@ -19,7 +19,7 @@ require (
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/briandowns/spinner v1.23.1 // indirect
 	github.com/charmbracelet/glamour v0.8.0 // indirect
-	github.com/charmbracelet/lipgloss v0.13.1 // indirect
+	github.com/charmbracelet/lipgloss v1.0.0 // indirect
 	github.com/charmbracelet/x/ansi v0.4.2 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.11.0 // indirect
@@ -50,7 +50,7 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.3-0.20240618155329-98d742f6907a // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/rivo/tview v0.0.0-20241016194538-c5e4fb24af13 // indirect
+	github.com/rivo/tview v0.0.0-20241030223020-e34b54cd4c27 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20240727222349-48295856cce7 // indirect
 	github.com/shurcooL/graphql v0.0.0-20230722043721-ed46e5a46466 // indirect
