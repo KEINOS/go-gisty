@@ -57,7 +57,7 @@ require (
 	github.com/spf13/cobra v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
-	github.com/thlib/go-timezone-local v0.0.3 // indirect
+	github.com/thlib/go-timezone-local v0.0.4 // indirect
 	github.com/yuin/goldmark v1.7.8 // indirect
 	github.com/yuin/goldmark-emoji v1.0.4 // indirect
 	github.com/zalando/go-keyring v0.2.6 // indirect
