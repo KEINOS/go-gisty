@@ -30,19 +30,21 @@ output:
 linters:
   enable-all: true
   disable:
+  # Remove deactivated linters
+  # - deadcode
+  # - execinquery
+  # - exhaustivestruct
+  # - golint
+  # - gomnd
+  # - ifshort
+  # - interfacer
+  # - maligned
+  # - nosnakecase
+  # - scopelint
+  # - structcheck
+  # - varcheck
   # Disable deprecated/abandoned linters
-  - deadcode
-  - execinquery
-  - exhaustivestruct
-  - golint
-  - gomnd
-  - ifshort
-  - interfacer
-  - maligned
-  - nosnakecase
-  - scopelint
-  - structcheck
-  - varcheck
+  - exportloopref
   # Disabled because of testing private functions
   - testpackage
   # We allow global variable for testing purposes
