@@ -92,17 +92,6 @@ func main() {
   - [function/method](https://pkg.go.dev/github.com/KEINOS/go-gisty/gisty#pkg-examples)
   - [application](https://pkg.go.dev/github.com/KEINOS/go-gisty/_examples)
 
-## Statuses
-
-[![UnitTests](https://github.com/KEINOS/go-gisty/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/unit-tests.yml "Unit tests on various Go versions. From Go 1.18 to the latest.")
-[![PlatformTests](https://github.com/KEINOS/go-gisty/actions/workflows/platform-tests.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/platform-tests.yml "Unit tests on various platforms. Such as Linux, macOS and Windows.")
-[![GolangCI](https://github.com/KEINOS/go-gisty/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/golangci-lint.yml "Lint and static analysis via golangci-lint.")
-
-[![CodeQL-Analysis](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml "Vulnerability scan using CodeQL.")
-[![Vulnerability](https://github.com/KEINOS/go-gisty/actions/workflows/vulnerability.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/vulnerability.yml "Vulnerability scan using govulncheck.")
-[![codecov](https://codecov.io/gh/KEINOS/go-gisty/branch/main/graph/badge.svg?token=JVY7WUeUFz)](https://codecov.io/gh/KEINOS/go-gisty "Code coverage")
-[![Go Report Card](https://goreportcard.com/badge/github.com/KEINOS/go-gisty)](https://goreportcard.com/report/github.com/KEINOS/go-gisty "Code quality")
-
 ## Contribute
 [![Go Reference](https://pkg.go.dev/badge/github.com/KEINOS/go-gisty.svg)](https://pkg.go.dev/github.com/KEINOS/go-gisty)
 [![go1.18+](https://img.shields.io/badge/Go-1.18+-blue?logo=go)](https://github.com/KEINOS/go-gisty/blob/main/.github/workflows/unit-tests.yml#L81 "Supported versions")
@@ -117,6 +106,17 @@ func main() {
     - Reproducible sample code is required to help us to fix the issue.
 - Help wanted:
   - [GitHub Issues](https://github.com/KEINOS/go-gisty/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+
+### Statuses
+
+[![UnitTests](https://github.com/KEINOS/go-gisty/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/unit-tests.yml "Unit tests on various Go versions. From Go 1.18 to the latest.")
+[![PlatformTests](https://github.com/KEINOS/go-gisty/actions/workflows/platform-tests.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/platform-tests.yml "Unit tests on various platforms. Such as Linux, macOS and Windows.")
+[![GolangCI](https://github.com/KEINOS/go-gisty/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/golangci-lint.yml "Lint and static analysis via golangci-lint.")
+
+[![CodeQL-Analysis](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml "Vulnerability scan using CodeQL.")
+[![Vulnerability](https://github.com/KEINOS/go-gisty/actions/workflows/vulnerability.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/vulnerability.yml "Vulnerability scan using govulncheck.")
+[![codecov](https://codecov.io/gh/KEINOS/go-gisty/branch/main/graph/badge.svg?token=JVY7WUeUFz)](https://codecov.io/gh/KEINOS/go-gisty "Code coverage")
+[![Go Report Card](https://goreportcard.com/badge/github.com/KEINOS/go-gisty)](https://goreportcard.com/report/github.com/KEINOS/go-gisty "Code quality")
 
 ## TODOs
 
