@@ -72,14 +72,14 @@ func (g *Gisty) Update(args UpdateArgs) (msg string, err error) {
 //
 // If altF is not nil, it will be used instead of the default function.
 func (g *Gisty) update(args []string, altF func(*sync.SyncOptions) error) (string, error) {
-	cmdSync := sync.NewCmdSync(g.Factory, altF)
+	cmd := sync.NewCmdSync(g.Factory, altF)
 
-	cmdSync.SetArgs(args)
-	cmdSync.SetIn(g.Stdin)
-	cmdSync.SetOut(g.Stdout)
-	cmdSync.SetErr(g.Stderr)
+	cmd.SetArgs(args)
+	cmd.SetIn(g.Stdin)
+	cmd.SetOut(g.Stdout)
+	cmd.SetErr(g.Stderr)
 
-	err := WrapIfErr(cmdSync.Execute(), "failed to execute update/sync command")
+	err := WrapIfErr(cmd.Execute(), "failed to execute update/sync command")
 	if err != nil {
 		return "", err
 	}

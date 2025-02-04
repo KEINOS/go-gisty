@@ -33,14 +33,14 @@ func (g *Gisty) read(gist string, altF func(*view.ViewOptions) error) (*shared.G
 		runView = altF
 	}
 
-	cmdList := view.NewCmdView(g.Factory, runView)
+	cmd := view.NewCmdView(g.Factory, runView)
 
-	cmdList.SetArgs([]string{gist})
-	cmdList.SetIn(g.Stdin)
-	cmdList.SetOut(g.Stdout)
-	cmdList.SetErr(g.Stderr)
+	cmd.SetArgs([]string{gist})
+	cmd.SetIn(g.Stdin)
+	cmd.SetOut(g.Stdout)
+	cmd.SetErr(g.Stderr)
 
-	if err := WrapIfErr(cmdList.Execute(), "failed to read gist"); err != nil {
+	if err := WrapIfErr(cmd.Execute(), "failed to read gist"); err != nil {
 		return nil, err
 	}
 

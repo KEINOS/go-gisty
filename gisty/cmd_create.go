@@ -39,14 +39,14 @@ func (g *Gisty) Create(args CreateArgs) (*url.URL, error) {
 //
 // If altF is not nil, it will be used instead of the default function.
 func (g *Gisty) create(args []string, altF func(*create.CreateOptions) error) (*url.URL, error) {
-	cmdList := create.NewCmdCreate(g.Factory, altF)
+	cmd := create.NewCmdCreate(g.Factory, altF)
 
-	cmdList.SetArgs(args)
-	cmdList.SetIn(g.Stdin)
-	cmdList.SetOut(g.Stdout)
-	cmdList.SetErr(g.Stderr)
+	cmd.SetArgs(args)
+	cmd.SetIn(g.Stdin)
+	cmd.SetOut(g.Stdout)
+	cmd.SetErr(g.Stderr)
 
-	err := WrapIfErr(cmdList.Execute(), "failed to execute create command")
+	err := WrapIfErr(cmd.Execute(), "failed to execute create command")
 	if err != nil {
 		return nil, err
 	}

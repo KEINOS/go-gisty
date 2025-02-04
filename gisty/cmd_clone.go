@@ -23,12 +23,12 @@ func (g *Gisty) Clone(args []string) error {
 //
 // If altF is not nil, it will be used instead of the default function.
 func (g *Gisty) clone(args []string, altF func(*clone.CloneOptions) error) error {
-	cmdList := clone.NewCmdClone(g.Factory, altF)
+	cmd := clone.NewCmdClone(g.Factory, altF)
 
-	cmdList.SetArgs(args)
-	cmdList.SetIn(g.Stdin)
-	cmdList.SetOut(g.Stdout)
-	cmdList.SetErr(g.Stderr)
+	cmd.SetArgs(args)
+	cmd.SetIn(g.Stdin)
+	cmd.SetOut(g.Stdout)
+	cmd.SetErr(g.Stderr)
 
-	return WrapIfErr(cmdList.Execute(), "failed to execute gist clone")
+	return WrapIfErr(cmd.Execute(), "failed to execute gist clone")
 }
