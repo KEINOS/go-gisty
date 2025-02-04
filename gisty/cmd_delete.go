@@ -4,6 +4,10 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
 )
 
+// Current `gh gist delete“ command requires `--yes` arg option when not running
+// interactively. It confirms deletion without prompting.
+const argOptYes = "--yes"
+
 // Delete deletes a gist for a given gist ID or URL.
 //
 // Note that it will remove the gist right away, without any confirmation.
@@ -17,7 +21,10 @@ func (g *Gisty) Delete(gist string) error {
 func (g *Gisty) delete(gist string, altF func(*delete.DeleteOptions) error) error {
 	cmdList := delete.NewCmdDelete(g.Factory, altF)
 
-	cmdList.SetArgs([]string{gist})
+	cmdList.SetArgs([]string{
+		argOptYes,
+		gist,
+	})
 	cmdList.SetIn(g.Stdin)
 	cmdList.SetOut(g.Stdout)
 	cmdList.SetErr(g.Stderr)
