@@ -24,7 +24,6 @@
 #  Since the service `tidy` will update/re-write the "go.mod" file to the latest
 #  version, during it's process the "go.mod" file will be gone temporarily. Thus,
 #  it will cause failure in the other containers becaue of missing "go.mod" file.
-version: "3.9"
 
 volumes:
   GO_MOD_CACHE:
@@ -45,7 +44,7 @@ services:
       context: ..
       dockerfile: ./.github/Dockerfile
       args:
-        VARIANT: 1.22-alpine
+        VARIANT: 1.23-alpine
     volumes:
       - ..:/workspaces
       - GO_MOD_CACHE:/go/pkg/mod
@@ -61,14 +60,14 @@ services:
       - ..:/workspaces
       - GO_MOD_CACHE:/go/pkg/mod
     entrypoint: [ "make", "install", "vuln" ]
-  # Service min runs the tests on Go v1.22 which is the minimum supported
+  # Service min runs the tests on Go v1.23 which is the minimum supported
   # version.
   min:
     build:
       context: ..
       dockerfile: ./.github/Dockerfile
       args:
-        VARIANT: 1.22-alpine
+        VARIANT: 1.23-alpine
     volumes:
       - ..:/workspaces
       - GO_MOD_CACHE:/go/pkg/mod
