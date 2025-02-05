@@ -27,9 +27,9 @@ import "github.com/KEINOS/go-gisty/gisty"
 - [x] `Gisty.Stargazer()` .... Get number of stars of a specified gist in GitHub.
 - [x] `Gisty.Comments()` ..... Get comments of a specified gist in GitHub.
 
-> __Note__ : This package is a spin-off of the [`gist` subcommand](https://github.com/cli/cli/tree/trunk/pkg/cmd/gist) from the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli) and is intended to provide a **similar functionality as the `gh gist` command in Go applications**.
+> __Note__ : This package is a wrapper of the [`gist` subcommand](https://github.com/cli/cli/tree/trunk/pkg/cmd/gist) from the [GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli). It is intended to provide a **similar functionality as the `gh gist` command in your Go applications**.
 >
-> Conversely, if you just **want to create a single command that perform gist operations**, it is recommended to create an alias for the `gh gist` command in your shell configuration, instead of re-inventing the wheel like I did. Also, **if you are a vim user and want to handle gist through vim**, you should consider using the [vim-gist](https://github.com/mattn/vim-gist) plugin.
+> Conversely, if you just **want to create a single command that perform gist operations**, then it is recommended to create an alias for the `gh gist` command in your shell configuration, instead of re-inventing the wheel like I did. Also, **if you are a vim user and want to handle gist through vim**, you should consider using the [vim-gist](https://github.com/mattn/vim-gist) plugin.
 
 ```go
 func Example() {
