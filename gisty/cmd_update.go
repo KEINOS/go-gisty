@@ -15,6 +15,7 @@ type UpdateArgs struct {
 	Force       bool   // if true, syncs using a hard reset. fast forward update if false.
 }
 
+// NewUpdateArgs returns a new UpdateArgs with the given path to the local repository.
 func NewUpdateArgs(pathDirRepo string) UpdateArgs {
 	return UpdateArgs{
 		PathDirRepo: pathDirRepo,

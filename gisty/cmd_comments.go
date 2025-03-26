@@ -38,6 +38,7 @@ var DummyComment = Comment{
 //  Type: Author
 // ----------------------------------------------------------------------------
 
+// Author is a struct for the author node in the GraphQL response.
 type Author struct {
 	AvatarURL string `json:"avatarUrl"`
 	Login     string `json:"login"`

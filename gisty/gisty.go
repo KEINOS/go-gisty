@@ -90,6 +90,7 @@ type AltFunc struct {
 //  Constructor
 // ----------------------------------------------------------------------------
 
+// MaxCommentDefault is the default value of max number of comments to be fetched.
 const MaxCommentDefault = 100
 
 // NewGisty returns a new instance of Gisty.
