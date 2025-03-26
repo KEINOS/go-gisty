@@ -3,8 +3,10 @@
 # - It requires golangci-lint 1.48.0 or newer.
 # - Available linters see: https://golangci-lint.run/usage/linters/
 # - Sample of config see: https://golangci-lint.run/usage/configuration/#config-file
-
 # Options for analysis running
+
+version: "2"
+
 run:
   # Include test files.
   tests: true
@@ -16,19 +18,14 @@ run:
   # Allow multiple parallel golangci-lint instances running.
   allow-parallel-runners: true
 
-# Which dirs to skip. Issues from them won't be reported.
-issues:
-  exclude-dirs:
-    - .github
-
-# Output configuration options
-output:
-  # Sorts results by: filepath, line and column
-  sort-results: true
-
 # Enabled all linters. Conf settings may follow.
 linters:
-  enable-all: true
+  # Which dirs to skip. Issues from them won't be reported.
+  exclusions:
+    paths:
+      - .github
+  default: all
+
   disable:
   # Remove deactivated linters
   # - deadcode
@@ -43,8 +40,9 @@ linters:
   # - scopelint
   # - structcheck
   # - varcheck
+  # - exportloopref
+  # - tenv
   # Disable deprecated/abandoned linters
-  - exportloopref
   # Disabled because of testing private functions
   - testpackage
   # We allow global variable for testing purposes
