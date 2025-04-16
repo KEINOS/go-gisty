@@ -27,12 +27,13 @@ require (
 	github.com/charmbracelet/bubbles v0.21.0 // indirect
 	github.com/charmbracelet/bubbletea v1.3.4 // indirect
 	github.com/charmbracelet/colorprofile v0.3.0 // indirect
-	github.com/charmbracelet/glamour v0.9.2-0.20250319212134-549f544650e3 // indirect
-	github.com/charmbracelet/huh v0.6.1-0.20250409210615-c5906631cbb5 // indirect
-	github.com/charmbracelet/lipgloss v1.1.1-0.20250319133953-166f707985bc // indirect
+	github.com/charmbracelet/glamour v0.10.0 // indirect
+	github.com/charmbracelet/huh v0.7.0 // indirect
+	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
 	github.com/charmbracelet/x/ansi v0.8.0 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
-	github.com/charmbracelet/x/exp/strings v0.0.0-20250407102404-92fd13048199 // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20250416155516-c8c095191e0d // indirect
+	github.com/charmbracelet/x/exp/strings v0.0.0-20250416155516-c8c095191e0d // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.12.0 // indirect
