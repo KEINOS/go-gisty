@@ -18,7 +18,7 @@ require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.3.1 // indirect
 	github.com/Masterminds/sprig/v3 v3.3.0 // indirect
-	github.com/alecthomas/chroma/v2 v2.16.0 // indirect
+	github.com/alecthomas/chroma/v2 v2.17.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
@@ -32,8 +32,8 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
 	github.com/charmbracelet/x/ansi v0.8.0 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
-	github.com/charmbracelet/x/exp/slice v0.0.0-20250421125601-6037826fe1e6 // indirect
-	github.com/charmbracelet/x/exp/strings v0.0.0-20250421125601-6037826fe1e6 // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20250422151758-2d8a85ff0569 // indirect
+	github.com/charmbracelet/x/exp/strings v0.0.0-20250422151758-2d8a85ff0569 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.12.0 // indirect
