@@ -7,7 +7,7 @@ toolchain go1.23.2
 require (
 	al.essio.dev/pkg/shellescape v1.6.0
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.70.0
+	github.com/cli/cli/v2 v2.71.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.10.0
 )
@@ -32,8 +32,8 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
 	github.com/charmbracelet/x/ansi v0.8.0 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
-	github.com/charmbracelet/x/exp/slice v0.0.0-20250422151758-2d8a85ff0569 // indirect
-	github.com/charmbracelet/x/exp/strings v0.0.0-20250422151758-2d8a85ff0569 // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20250423074942-12a286fa0a7f // indirect
+	github.com/charmbracelet/x/exp/strings v0.0.0-20250423074942-12a286fa0a7f // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.12.0 // indirect
