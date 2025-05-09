@@ -32,8 +32,8 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
 	github.com/charmbracelet/x/ansi v0.9.2 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
-	github.com/charmbracelet/x/exp/slice v0.0.0-20250505150409-97991a1f17d1 // indirect
-	github.com/charmbracelet/x/exp/strings v0.0.0-20250505150409-97991a1f17d1 // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20250509021451-13796e822d86 // indirect
+	github.com/charmbracelet/x/exp/strings v0.0.0-20250509021451-13796e822d86 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.12.0 // indirect
