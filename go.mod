@@ -30,7 +30,7 @@ require (
 	github.com/charmbracelet/glamour v0.10.0 // indirect
 	github.com/charmbracelet/huh v0.7.0 // indirect
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
-	github.com/charmbracelet/x/ansi v0.9.2 // indirect
+	github.com/charmbracelet/x/ansi v0.9.3 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
 	github.com/charmbracelet/x/exp/slice v0.0.0-20250616121729-19b66ab4499b // indirect
 	github.com/charmbracelet/x/exp/strings v0.0.0-20250616121729-19b66ab4499b // indirect
