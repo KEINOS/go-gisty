@@ -5,15 +5,15 @@
 #
 # Recommended usage:
 #   # Update go modules to the latest version.
-#   docker compose --file ./.github/docker-compose.yml run tidy
+#     docker compose --file ./.github/docker-compose.yml run --rm tidy
 #   # Run the lint and static analysis tools.
-#   docker compose --file ./.github/docker-compose.yml run lint
+#     docker compose --file ./.github/docker-compose.yml run --rm lint
 #   # Run the vulnerability scanner.
-#   docker compose --file ./.github/docker-compose.yml run vuln
-#   # Run the tests on Go v1.19.
-#   docker compose --file ./.github/docker-compose.yml run v1_19
+#     docker compose --file ./.github/docker-compose.yml run --rm vuln
+#   # Run the tests on minimum supported Go version
+#     docker compose --file ./.github/docker-compose.yml run --rm min
 #   # Run the tests on latest Go docker image.
-#   docker compose --file ./.github/docker-compose.yml run latest
+#     docker compose --file ./.github/docker-compose.yml run --rm latest
 #
 # NOT recommended usage:
 #   docker compose --file ./.github/docker-compose.yml up
@@ -44,7 +44,7 @@ services:
       context: ..
       dockerfile: ./.github/Dockerfile
       args:
-        VARIANT: 1.23-alpine
+        VARIANT: 1.24-alpine
     volumes:
       - ..:/workspaces
       - GO_MOD_CACHE:/go/pkg/mod
@@ -67,7 +67,7 @@ services:
       context: ..
       dockerfile: ./.github/Dockerfile
       args:
-        VARIANT: 1.23-alpine
+        VARIANT: 1.24-alpine
     volumes:
       - ..:/workspaces
       - GO_MOD_CACHE:/go/pkg/mod

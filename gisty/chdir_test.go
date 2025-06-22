@@ -16,7 +16,7 @@ func TestChDir_golden(t *testing.T) {
 
 	defer func() {
 		// Change the working directory back to the original working directory.
-		require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
+		t.Chdir(pathDirOrig)
 	}()
 
 	// Change the working directory to the temporary directory.
