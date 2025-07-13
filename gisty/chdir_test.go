@@ -17,7 +17,8 @@ func TestChDir_golden(t *testing.T) {
 	// Ensure we return to the original directory regardless of test outcome
 	t.Cleanup(func() {
 		// Only change back if the original directory still exists
-		if _, err := os.Stat(pathDirOrig); err == nil {
+		_, err := os.Stat(pathDirOrig)
+		if err == nil {
 			//nolint:usetesting // t.Chdir() has issues in Go 1.24, stick with os.Chdir()
 			require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
 		}

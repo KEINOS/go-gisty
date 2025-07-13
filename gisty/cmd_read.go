@@ -40,8 +40,9 @@ func (g *Gisty) read(gist string, altF func(*view.ViewOptions) error) (*shared.G
 	cmd.SetOut(g.Stdout)
 	cmd.SetErr(g.Stderr)
 
-	if err := WrapIfErr(cmd.Execute(), "failed to read gist"); err != nil {
-		return nil, err
+	err := cmd.Execute()
+	if err != nil {
+		return nil, WrapIfErr(err, "failed to read gist")
 	}
 
 	return resultGist, nil

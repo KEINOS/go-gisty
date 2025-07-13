@@ -13,33 +13,38 @@ import (
 // ============================================================================
 
 func ExampleNewErr() {
-	if err := gisty.NewErr(); err == nil {
-		fmt.Println("empty args returns nil")
+	err := gisty.NewErr()
+	if err == nil {
+		fmt.Println("empty args should return nil")
 	}
 
 	// Note the output contains the file name and line number of the caller.
-	if err := gisty.NewErr("simple error message"); err != nil {
+	err = gisty.NewErr("simple error message")
+	if err != nil {
 		fmt.Println(err)
 	}
 
-	if err := gisty.NewErr("%v error message", "formatted"); err != nil {
+	err = gisty.NewErr("%v error message", "formatted")
+	if err != nil {
 		fmt.Println(err)
 	}
 
-	if err := gisty.NewErr("%v error message(s)", 3); err != nil {
+	err = gisty.NewErr("%v error message(s)", 3)
+	if err != nil {
 		fmt.Println(err)
 	}
 
-	if err := gisty.NewErr(1, 2, 3); err != nil {
+	err = gisty.NewErr(1, 2, 3)
+	if err != nil {
 		fmt.Println(err)
 	}
 
 	// Output:
-	// empty args returns nil
-	// simple error message (file: new_err_test.go, line: 21)
-	// formatted error message (file: new_err_test.go, line: 25)
-	// 3 error message(s) (file: new_err_test.go, line: 29)
-	// 1 2 3 (file: new_err_test.go, line: 33)
+	// empty args should return nil
+	// simple error message (file: new_err_test.go, line: 22)
+	// formatted error message (file: new_err_test.go, line: 27)
+	// 3 error message(s) (file: new_err_test.go, line: 32)
+	// 1 2 3 (file: new_err_test.go, line: 37)
 }
 
 // ============================================================================

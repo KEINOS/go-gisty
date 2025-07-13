@@ -14,6 +14,7 @@ import (
 //nolint:paralleltest // Do not parallelize due to mocking global function variables.
 func TestGisty_Read_golden(t *testing.T) {
 	oldSharedGetGist := sharedGetGist
+
 	defer func() {
 		sharedGetGist = oldSharedGetGist
 	}()
@@ -78,6 +79,7 @@ func TestGisty_Read_on_error(t *testing.T) {
 //nolint:paralleltest // Do not parallelize due to mocking global function variables.
 func TestGisty_Read_invalid_url(t *testing.T) {
 	oldSharedGetGist := sharedGetGist
+
 	defer func() {
 		sharedGetGist = oldSharedGetGist
 	}()
@@ -102,6 +104,7 @@ func TestGisty_Read_invalid_url(t *testing.T) {
 //nolint:paralleltest // Do not parallelize due to mocking global function variables.
 func TestGisty_Read_empty_gist(t *testing.T) {
 	oldSharedGetGist := sharedGetGist
+
 	defer func() {
 		sharedGetGist = oldSharedGetGist
 	}()
@@ -176,6 +179,7 @@ func Test_readRun_fail_create_config(t *testing.T) {
 //nolint:paralleltest // Do not parallelize due to mocking global function variables.
 func Test_readRun_fail_get_gist(t *testing.T) {
 	oldSharedGetGist := sharedGetGist
+
 	defer func() {
 		sharedGetGist = oldSharedGetGist
 	}()

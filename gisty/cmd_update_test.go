@@ -144,6 +144,7 @@ func TestGisty_Update_fail_to_change_dir(t *testing.T) {
 
 	// Backup and defer restore the original osChdir function.
 	oldOSChdir := osChdir
+
 	defer func() {
 		osChdir = oldOSChdir
 	}()
@@ -173,6 +174,7 @@ func TestGisty_Update_fail_to_get_wd(t *testing.T) {
 
 	// Backup and defer restore the original osGetwd function.
 	oldOSGetwd := osGetwd
+
 	defer func() {
 		osGetwd = oldOSGetwd
 	}()
@@ -228,7 +230,8 @@ func chDirCleanUp(t *testing.T) {
 	t.Cleanup(func() {
 		// Only change back if the original directory still exists to avoid
 		// conflicts when temporary directories are cleaned up
-		if _, err := os.Stat(pathDirOrig); err == nil {
+		_, err := os.Stat(pathDirOrig)
+		if err == nil {
 			// Change the working directory back to the original working directory.
 			//nolint:usetesting // t.Chdir() has issues in Go 1.24, stick with os.Chdir()
 			require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)

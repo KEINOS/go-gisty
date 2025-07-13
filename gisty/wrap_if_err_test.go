@@ -35,6 +35,7 @@ func ExampleWrapIfErr() {
 func ExampleWrapIfErr_disable_error_position() {
 	// Backup and defer restore the original value of AppendErrPos
 	oldAppendErrPos := gisty.AppendErrPos
+
 	defer func() {
 		gisty.AppendErrPos = oldAppendErrPos
 	}()
@@ -53,5 +54,5 @@ func ExampleWrapIfErr_disable_error_position() {
 	}
 	// Output:
 	// wrapped at line 46: error occurred at line 45
-	// wrapped at line 52 (file: wrap_if_err_test.go, line: 52): error occurred at line 51 (file: wrap_if_err_test.go, line: 51)
+	// wrapped at line 52 (file: wrap_if_err_test.go, line: 53): error occurred at line 51 (file: wrap_if_err_test.go, line: 52)
 }

@@ -10,6 +10,7 @@ import (
 //nolint:paralleltest // This test is not parallel because it changes the global variable.
 func Test_getVersion_ver_is_set(t *testing.T) {
 	oldVersion := Version
+
 	defer func() {
 		Version = oldVersion
 	}()
@@ -22,6 +23,7 @@ func Test_getVersion_ver_is_set(t *testing.T) {
 //nolint:paralleltest // This test is not parallel because it changes the global variable.
 func Test_getVersion_ver_is_empty(t *testing.T) {
 	oldVersion := Version
+
 	defer func() {
 		Version = oldVersion
 	}()

@@ -10,6 +10,7 @@ import (
 func Test_getErrorPos(t *testing.T) {
 	// Backup and defer restore the original value of AppendErrPos
 	oldAppendErrPos := AppendErrPos
+
 	defer func() {
 		AppendErrPos = oldAppendErrPos
 	}()

@@ -42,7 +42,11 @@ linters:
   # - varcheck
   # - exportloopref
   # - tenv
+  #
   # Disable deprecated/abandoned linters
+  # ========================================
+  # Disabled due to wsl_v5
+  - wsl
   # Disabled because of testing private functions
   - testpackage
   # We allow global variable for testing purposes

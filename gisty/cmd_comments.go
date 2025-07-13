@@ -141,7 +141,8 @@ func (g *Gisty) comments(gistID string, runF func(*api.ApiOptions) error) ([]Com
 
 	var nodes []Comment
 
-	if err := json.Unmarshal(response, &nodes); err != nil {
+	err = json.Unmarshal(response, &nodes)
+	if err != nil {
 		return nil, WrapIfErr(err, "failed to parse GitHub API response. malformed JSON")
 	}
 
