@@ -5,7 +5,8 @@ import (
 	"testing"
 )
 
-// Before enhancement it is recommended to use the following command to run the benchmark:
+// Before enhancement it is recommended to use the following command to run the
+// benchmark:
 //
 // To benchmark, run:
 //   go test -bench . ./gisty/... -count 10 -benchmem > before.txt
