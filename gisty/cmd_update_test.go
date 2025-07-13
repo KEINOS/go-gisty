@@ -225,7 +225,11 @@ func chDirCleanUp(t *testing.T) {
 	require.NoError(t, err, "failed to get current working directory during test setup")
 
 	t.Cleanup(func() {
-		// Change the working directory back to the original working directory.
-		require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
+		// Only change back if the original directory still exists to avoid
+		// conflicts when temporary directories are cleaned up
+		if _, err := os.Stat(pathDirOrig); err == nil {
+			// Change the working directory back to the original working directory.
+			require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
+		}
 	})
 }

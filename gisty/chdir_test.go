@@ -14,10 +14,13 @@ func TestChDir_golden(t *testing.T) {
 
 	pathDirTmp := t.TempDir()
 
-	defer func() {
-		// Change the working directory back to the original working directory.
-		t.Chdir(pathDirOrig)
-	}()
+	// Ensure we return to the original directory regardless of test outcome
+	t.Cleanup(func() {
+		// Only change back if the original directory still exists
+		if _, err := os.Stat(pathDirOrig); err == nil {
+			require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
+		}
+	})
 
 	// Change the working directory to the temporary directory.
 	returnPath, err := ChDir(pathDirTmp)
