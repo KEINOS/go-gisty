@@ -224,11 +224,13 @@ func chDirCleanUp(t *testing.T) {
 	pathDirOrig, err := os.Getwd()
 	require.NoError(t, err, "failed to get current working directory during test setup")
 
+	// Ensure we return to the original directory regardless of test outcome
 	t.Cleanup(func() {
 		// Only change back if the original directory still exists to avoid
 		// conflicts when temporary directories are cleaned up
 		if _, err := os.Stat(pathDirOrig); err == nil {
 			// Change the working directory back to the original working directory.
+			//nolint:usetesting // t.Chdir() has issues in Go 1.24, stick with os.Chdir()
 			require.NoError(t, os.Chdir(pathDirOrig), "failed to change working directory back to %s", pathDirOrig)
 		}
 	})
