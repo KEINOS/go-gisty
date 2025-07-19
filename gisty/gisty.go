@@ -43,7 +43,6 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/repo/sync"
 	"github.com/cli/cli/v2/pkg/cmdutil"
 	"github.com/cli/cli/v2/pkg/iostreams"
-	_ "golang.org/x/oauth2"
 )
 
 // ----------------------------------------------------------------------------

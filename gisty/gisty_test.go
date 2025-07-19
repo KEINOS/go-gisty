@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	_ "golang.org/x/oauth2"
 )
 
 func TestSanitizeGistID(t *testing.T) {
