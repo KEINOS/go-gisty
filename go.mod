@@ -9,7 +9,7 @@ require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/cli/cli/v2 v2.78.0
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/testify v1.11.0
+	github.com/stretchr/testify v1.11.1
 	golang.org/x/oauth2 v0.30.0
 )
 
@@ -74,7 +74,7 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.16.0 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/rivo/tview v0.0.0-20250625164341-a4a78f1e05cb // indirect
+	github.com/rivo/tview v0.42.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/shurcooL/githubv4 v0.0.0-20240727222349-48295856cce7 // indirect
