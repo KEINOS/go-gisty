@@ -33,8 +33,8 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
 	github.com/charmbracelet/x/ansi v0.10.2 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
-	github.com/charmbracelet/x/exp/slice v0.0.0-20250930161802-f43877747418 // indirect
-	github.com/charmbracelet/x/exp/strings v0.0.0-20250930161802-f43877747418 // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20250930200525-31788bbe6486 // indirect
+	github.com/charmbracelet/x/exp/strings v0.0.0-20250930200525-31788bbe6486 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.12.2 // indirect
@@ -59,7 +59,7 @@ require (
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/itchyny/gojq v0.12.17 // indirect
-	github.com/itchyny/timefmt-go v0.1.6 // indirect
+	github.com/itchyny/timefmt-go v0.1.7 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/lucasb-eyer/go-colorful v1.3.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
