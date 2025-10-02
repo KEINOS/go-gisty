@@ -7,7 +7,7 @@ toolchain go1.24.4
 require (
 	al.essio.dev/pkg/shellescape v1.6.0
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.80.0
+	github.com/cli/cli/v2 v2.81.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/oauth2 v0.30.0
@@ -33,15 +33,15 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
 	github.com/charmbracelet/x/ansi v0.10.2 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
-	github.com/charmbracelet/x/exp/slice v0.0.0-20250930200525-31788bbe6486 // indirect
-	github.com/charmbracelet/x/exp/strings v0.0.0-20250930200525-31788bbe6486 // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20251002185555-b6045cb4669e // indirect
+	github.com/charmbracelet/x/exp/strings v0.0.0-20251002185555-b6045cb4669e // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.12.2 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
 	github.com/clipperhouse/uax29/v2 v2.2.0 // indirect
-	github.com/danieljoos/wincred v1.2.2 // indirect
+	github.com/danieljoos/wincred v1.2.3 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dlclark/regexp2 v1.11.5 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
