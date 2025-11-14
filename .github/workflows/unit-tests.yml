@@ -1,5 +1,5 @@
 # This workflow runs:
-# - Unit tests on Go 1.22 and latest Go.
+# - Unit tests on Go 1.25 and latest Go.
 #
 # This workflow caches images built with Docker and docker-compose to speed up its execution.
 name: UnitTests
@@ -23,7 +23,7 @@ jobs:
         uses: fkirc/skip-duplicate-actions@v5
 
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Create image tag from file hash
         uses: KEINOS/gh-action-hash-for-cache@main
@@ -54,7 +54,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           : # Pull images one-by-one for stability. Minimum and latest supported versions.
-          docker pull golang:1.22-alpine
+          docker pull golang:1.25-alpine
           docker pull golang:alpine
 
       - name: Build Docker images if no-cache
@@ -63,7 +63,7 @@ jobs:
           docker compose --file ./.github/docker-compose.yml build min
           docker compose --file ./.github/docker-compose.yml build latest
 
-      - name: Run tests on Go 1.22 (minimum supported version)
+      - name: Run tests on Go 1.25 (minimum supported version)
         run: docker compose --file ./.github/docker-compose.yml run min
       - name: Run tests on latest Go
         run: docker compose --file ./.github/docker-compose.yml run latest
