@@ -1,13 +1,11 @@
 module github.com/KEINOS/go-gisty
 
-go 1.24.0
-
-toolchain go1.24.4
+go 1.25.0
 
 require (
 	al.essio.dev/pkg/shellescape v1.6.0
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.82.1
+	github.com/cli/cli/v2 v2.83.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/oauth2 v0.30.0
@@ -37,7 +35,7 @@ require (
 	github.com/charmbracelet/x/exp/strings v0.0.0-20251103182200-ebca060084b9 // indirect
 	github.com/charmbracelet/x/term v0.2.2 // indirect
 	github.com/cli/browser v1.3.0 // indirect
-	github.com/cli/go-gh/v2 v2.12.2 // indirect
+	github.com/cli/go-gh/v2 v2.13.0 // indirect
 	github.com/cli/safeexec v1.0.1 // indirect
 	github.com/cli/shurcooL-graphql v0.0.4 // indirect
 	github.com/clipperhouse/stringish v0.1.1 // indirect
