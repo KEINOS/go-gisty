@@ -26,7 +26,7 @@ func BenchmarkSanitizeGistID(b *testing.B) {
 
 	b.ResetTimer()
 
-	for range b.N {
+	for b.Loop() {
 		SanitizeGistID(strShakespeare)
 	}
 }

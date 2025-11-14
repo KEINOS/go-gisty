@@ -36,7 +36,7 @@ func ExampleGisty_Comments() {
 	// Print available fields in the Comment struct.
 	for _, field := range []struct {
 		nameField string
-		value     interface{}
+		value     any
 	}{
 		// List of fields in the Comment struct.
 		{"Name", firstComment.Author.Login},

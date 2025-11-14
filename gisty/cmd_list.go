@@ -62,8 +62,9 @@ func parseGistInfo(list string) ([]GistInfo, error) {
 
 	result := []GistInfo{}
 
-	lines := strings.Split(list, "\n")
-	for _, line := range lines {
+	lines := strings.SplitSeq(list, "\n")
+
+	for line := range lines {
 		if line != "" {
 			gistInfo, err := NewGistInfo(line)
 			if err != nil {
