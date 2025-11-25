@@ -31,8 +31,8 @@ require (
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
 	github.com/charmbracelet/x/ansi v0.11.1 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.14 // indirect
-	github.com/charmbracelet/x/exp/slice v0.0.0-20251124184241-1dbcd821cc13 // indirect
-	github.com/charmbracelet/x/exp/strings v0.0.0-20251124184241-1dbcd821cc13 // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20251125134817-d85927d7854b // indirect
+	github.com/charmbracelet/x/exp/strings v0.0.0-20251125134817-d85927d7854b // indirect
 	github.com/charmbracelet/x/term v0.2.2 // indirect
 	github.com/cli/browser v1.3.0 // indirect
 	github.com/cli/go-gh/v2 v2.13.0 // indirect
@@ -49,7 +49,7 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.11 // indirect
 	github.com/gdamore/encoding v1.0.1 // indirect
-	github.com/gdamore/tcell/v2 v2.11.0 // indirect
+	github.com/gdamore/tcell/v2 v2.12.0 // indirect
 	github.com/godbus/dbus/v5 v5.2.0 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/google/uuid v1.6.0 // indirect
