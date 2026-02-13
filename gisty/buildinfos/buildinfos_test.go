@@ -1,5 +1,4 @@
-//nolint:revive // ignore reviver warning about package name
-package buildinfo
+package buildinfos
 
 import (
 	"runtime/debug"

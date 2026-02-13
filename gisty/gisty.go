@@ -32,7 +32,7 @@ package gisty
 import (
 	"bytes"
 
-	"github.com/KEINOS/go-gisty/gisty/buildinfo"
+	buildinfo "github.com/KEINOS/go-gisty/gisty/buildinfos"
 	"github.com/cli/cli/v2/pkg/cmd/api"
 	"github.com/cli/cli/v2/pkg/cmd/factory"
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
