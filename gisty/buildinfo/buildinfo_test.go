@@ -1,3 +1,4 @@
+//nolint:revive // ignore reviver warning about package name
 package buildinfo
 
 import (
