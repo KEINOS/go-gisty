@@ -1,6 +1,6 @@
 module github.com/KEINOS/go-gisty
 
-go 1.25.0
+go 1.26.1
 
 require (
 	al.essio.dev/pkg/shellescape v1.6.0
