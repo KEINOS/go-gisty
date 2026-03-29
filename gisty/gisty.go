@@ -98,7 +98,7 @@ func NewGisty() *Gisty {
 	buildDate := buildinfo.Date
 	buildVersion := buildinfo.Version
 	ios, stdin, stdout, stderr := iostreams.Test()
-	cmdFactory := factory.New(buildVersion)
+	cmdFactory := factory.New(buildVersion, "go-gisty")
 
 	cmdFactory.IOStreams = ios
 
