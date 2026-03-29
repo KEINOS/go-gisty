@@ -21,9 +21,9 @@
 # Notes:
 #  It is recommended to run specifying a specific service and not at once.
 #
-#  Since the service `tidy` will update/re-write the "go.mod" file to the latest
-#  version, during it's process the "go.mod" file will be gone temporarily. Thus,
-#  it will cause failure in the other containers becaue of missing "go.mod" file.
+#  Since the service `tidy` updates the "go.mod" and "go.sum" files in place,
+#  avoid running it alongside other services against the same bind mount.
+#  Concurrent writes can cause unstable results in the other containers.
 
 volumes:
   GO_MOD_CACHE:
