@@ -63,3 +63,27 @@ func Test_getVersion_from_build_info(t *testing.T) {
 
 	require.Equal(t, expect, actual)
 }
+
+//nolint:paralleltest // This test is not parallel because it changes global variables.
+func Test_getVersion_from_build_info_with_empty_version(t *testing.T) {
+	oldVersion := Version
+	oldDebugReadBuildInfo := debugReadBuildInfo
+
+	defer func() {
+		Version = oldVersion
+		debugReadBuildInfo = oldDebugReadBuildInfo
+	}()
+
+	debugReadBuildInfo = func() (*debug.BuildInfo, bool) {
+		//nolint:exhaustruct // this is a test
+		return &debug.BuildInfo{
+			Main: debug.Module{
+				Version: "",
+			},
+		}, true
+	}
+
+	Version = ""
+
+	require.Equal(t, "(devel)", getVersion())
+}
