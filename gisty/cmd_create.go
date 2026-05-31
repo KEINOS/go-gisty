@@ -39,6 +39,17 @@ func (g *Gisty) Create(args CreateArgs) (*url.URL, error) {
 //
 // If altF is not nil, it will be used instead of the default function.
 func (g *Gisty) create(args []string, altF func(*create.CreateOptions) error) (*url.URL, error) {
+	if altF == nil {
+		err := WrapIfErr(g.runGH(append([]string{commandGist, "create"}, args...)...), "failed to execute create command")
+		if err != nil {
+			return nil, err
+		}
+
+		gistURL, err := url.Parse(strings.TrimSpace(g.Stdout.String()))
+
+		return gistURL, WrapIfErr(err, "failed to parse gist URL")
+	}
+
 	cmd := create.NewCmdCreate(g.Factory, altF)
 
 	cmd.SetArgs(args)

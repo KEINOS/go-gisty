@@ -5,6 +5,7 @@ import (
 
 	"github.com/cli/cli/v2/pkg/cmd/gist/shared"
 	"github.com/cli/cli/v2/pkg/cmd/gist/view"
+	ghauth "github.com/cli/go-gh/v2/pkg/auth"
 )
 
 // Read returns a list of GistInfo objects. The returned list depends on the
@@ -76,20 +77,11 @@ func readRun(opts *view.ViewOptions) (*shared.Gist, error) {
 		return nil, WrapIfErr(err, "failed to create http client")
 	}
 
-	cfg, err := opts.Config()
-	if err != nil || forceFailReadConf {
-		// forceFailReadConf is a dependency-injection to force the failure of
-		// reading the configuration. It was implemented so, since opts.Config
-		// is a function that returns an object of internal package config.Config
-		// we can't mock it directly.
-		if err == nil && forceFailReadConf {
-			err = NewErr("forced error")
-		}
-
-		return nil, WrapIfErr(err, "failed to read option config")
+	if forceFailReadConf {
+		return nil, WrapIfErr(NewErr("forced error"), "failed to read option config")
 	}
 
-	hostname, _ := cfg.Authentication().DefaultHost()
+	hostname, _ := ghauth.DefaultHost()
 
 	gist, err := sharedGetGist(client, hostname, gistID)
 	if err != nil {

@@ -7,6 +7,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+const testVersion123 = "v1.2.3"
+
 //nolint:paralleltest // This test is not parallel because it changes the global variable.
 func Test_getVersion_ver_is_set(t *testing.T) {
 	oldVersion := Version
@@ -15,9 +17,9 @@ func Test_getVersion_ver_is_set(t *testing.T) {
 		Version = oldVersion
 	}()
 
-	Version = "v1.2.3"
+	Version = testVersion123
 
-	require.Equal(t, "v1.2.3", getVersion())
+	require.Equal(t, testVersion123, getVersion())
 }
 
 //nolint:paralleltest // This test is not parallel because it changes the global variable.
@@ -51,14 +53,14 @@ func Test_getVersion_from_build_info(t *testing.T) {
 		//nolint:exhaustruct // this is a test
 		return &debug.BuildInfo{
 			Main: debug.Module{
-				Version: "v1.2.3",
+				Version: testVersion123,
 			},
 		}, true
 	}
 
 	Version = ""
 
-	expect := "v1.2.3"
+	expect := testVersion123
 	actual := getVersion()
 
 	require.Equal(t, expect, actual)

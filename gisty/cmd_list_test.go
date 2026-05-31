@@ -7,6 +7,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+const testGistID7101 = "7101f542be23e5048198e2a27c3cfda8"
+
 func TestGisty_List_msg_on_error(t *testing.T) {
 	t.Parallel()
 
@@ -72,8 +74,8 @@ func Test_parseGistInfo_golden(t *testing.T) {
 			updatedAt:   "2022-04-18 03:04:38 +0000 UTC",
 		},
 		{
-			input:       "7101f542be23e5048198e2a27c3cfda8	Title of gist item1	1 file	public	2022-09-18T18:56:10Z\n\n",
-			gistID:      "7101f542be23e5048198e2a27c3cfda8",
+			input:       testGistID7101 + "\tTitle of gist item1\t1 file\tpublic\t2022-09-18T18:56:10Z\n\n",
+			gistID:      testGistID7101,
 			description: "Title of gist item1",
 			files:       1,
 			isPublic:    true,

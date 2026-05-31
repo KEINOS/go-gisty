@@ -7,6 +7,9 @@ It can retrieve the stargazers (number of stars) of a gist as well.
 
 ## Usage
 
+Most methods execute the [GitHub CLI](https://cli.github.com/) internally.
+Install `gh` and make sure it is available in `PATH`.
+
 ```go
 go get "github.com/KEINOS/go-gisty"
 ```

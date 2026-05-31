@@ -17,6 +17,7 @@ var Version = ""
 // Date is dynamically set at build time in the Makefile.
 var Date = "" // YYYY-MM-DD
 
+//nolint:gochecknoinits // allow init to set the app version at runtime.
 func init() {
 	Version = getVersion()
 }

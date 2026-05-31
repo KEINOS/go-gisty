@@ -11,6 +11,11 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+const (
+	readTestGistID  = "5b10b34f87955dfc86d310cd623a61d1"
+	readTestGistURL = "https://gist.github.com/" + readTestGistID
+)
+
 //nolint:paralleltest // Do not parallelize due to mocking global function variables.
 func TestGisty_Read_golden(t *testing.T) {
 	oldSharedGetGist := sharedGetGist
@@ -47,13 +52,13 @@ func TestGisty_Read_golden(t *testing.T) {
 
 	// Instantiate Gisty object and execute the Read method.
 	obj := NewGisty()
-	gist, err := obj.Read("https://gist.github.com/5b10b34f87955dfc86d310cd623a61d1")
+	gist, err := obj.Read(readTestGistURL)
 
 	require.NoError(t, err)
 	assert.Len(t, gist.Files, 1)
-	assert.Equal(t, "5b10b34f87955dfc86d310cd623a61d1", gist.ID)
+	assert.Equal(t, readTestGistID, gist.ID)
 	assert.Equal(t, "this is a dummy gist", gist.Description)
-	assert.Equal(t, "https://gist.github.com/5b10b34f87955dfc86d310cd623a61d1", gist.HTMLURL)
+	assert.Equal(t, readTestGistURL, gist.HTMLURL)
 	assert.Equal(t, "file1.txt", gist.Files["file1.txt"].Filename)
 	assert.Equal(t, "text/plain", gist.Files["file1.txt"].Type)
 	assert.Equal(t, "Text", gist.Files["file1.txt"].Language)
@@ -68,7 +73,7 @@ func TestGisty_Read_on_error(t *testing.T) {
 		return NewErr("forced error")
 	}
 
-	gist, err := obj.Read("5b10b34f87955dfc86d310cd623a61d1")
+	gist, err := obj.Read(readTestGistID)
 
 	require.Error(t, err)
 	require.Nil(t, gist, "gist should be nil on error")
@@ -92,7 +97,7 @@ func TestGisty_Read_invalid_url(t *testing.T) {
 	obj := NewGisty()
 
 	// URL with control characters.
-	gist, err := obj.Read("https://gist.github.com/5b10b34f87955dfc86d310cd623a61d1\n")
+	gist, err := obj.Read(readTestGistURL + "\n")
 
 	require.Error(t, err)
 	require.Nil(t, gist, "gist should be nil on error")
@@ -135,7 +140,7 @@ func Test_readRun_fail_create_http_client(t *testing.T) {
 
 	//nolint:exhaustruct // Missing fields are ok here.
 	opts := &view.ViewOptions{
-		Selector: "5b10b34f87955dfc86d310cd623a61d1",
+		Selector: readTestGistID,
 		HttpClient: func() (*http.Client, error) {
 			return nil, NewErr("forced error")
 		},
@@ -168,7 +173,7 @@ func Test_readRun_fail_create_config(t *testing.T) {
 
 	obj := NewGisty()
 
-	gist, err := obj.Read("5b10b34f87955dfc86d310cd623a61d1")
+	gist, err := obj.Read(readTestGistID)
 
 	require.Error(t, err)
 	require.Nil(t, gist, "returned gist object should be nil on error")
@@ -191,7 +196,7 @@ func Test_readRun_fail_get_gist(t *testing.T) {
 
 	obj := NewGisty()
 
-	gist, err := obj.Read("5b10b34f87955dfc86d310cd623a61d1")
+	gist, err := obj.Read(readTestGistID)
 
 	require.Error(t, err)
 	require.Nil(t, gist, "returned gist object should be nil on error")

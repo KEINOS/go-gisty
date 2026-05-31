@@ -21,26 +21,35 @@ func (g *Gisty) Stargazer(gistID string) (int, error) {
 //
 // If altF is not nil, it will be used instead of the default function.
 func (g *Gisty) stargazer(gistID string, runF func(*api.ApiOptions) error) (int, error) {
-	cmdAPI := api.NewCmdApi(g.Factory, runF)
+	gistID = SanitizeGistID(gistID)
 	query := fmt.Sprintf(
 		"query { viewer { gist (name: \"%s\" ) { name, stargazerCount } } }",
-		SanitizeGistID(gistID), // sanitize to avoid unwanted query to request
+		gistID, // sanitize to avoid unwanted query to request
 	)
 	template := "{{.data.viewer.gist.stargazerCount}}"
+
 	argv := []string{
 		"graphql",
 		"-f", "query=" + query,
 		"--template=" + shellescape.Quote(template),
 	}
+	if runF == nil {
+		err := WrapIfErr(g.runGH(append([]string{"api"}, argv...)...), "failed to execute GitHub API request")
+		if err != nil {
+			return 0, err
+		}
+	} else {
+		cmdAPI := api.NewCmdApi(g.Factory, runF)
 
-	cmdAPI.SetArgs(argv)
-	cmdAPI.SetIn(g.Stdin)
-	cmdAPI.SetOut(g.Stdout)
-	cmdAPI.SetErr(g.Stderr)
+		cmdAPI.SetArgs(argv)
+		cmdAPI.SetIn(g.Stdin)
+		cmdAPI.SetOut(g.Stdout)
+		cmdAPI.SetErr(g.Stderr)
 
-	err := WrapIfErr(cmdAPI.Execute(), "failed to execute GitHub API request")
-	if err != nil {
-		return 0, err
+		err := WrapIfErr(cmdAPI.Execute(), "failed to execute GitHub API request")
+		if err != nil {
+			return 0, err
+		}
 	}
 
 	// Parse the GitHub API response to get the number of stars.

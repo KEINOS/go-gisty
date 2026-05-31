@@ -117,7 +117,6 @@ func (g *Gisty) comments(gistID string, runF func(*api.ApiOptions) error) ([]Com
 		return nil, NewErr("invalid gist ID")
 	}
 
-	cmdAPI := api.NewCmdApi(g.Factory, runF)
 	query := heredoc.Docf(tplQueryComments, gistID, g.MaxComment)
 
 	argv := []string{
@@ -125,23 +124,31 @@ func (g *Gisty) comments(gistID string, runF func(*api.ApiOptions) error) ([]Com
 		"-f", "query=" + query,
 		"--jq", "[.data.viewer.gist.comments.edges[].node]",
 	}
+	if runF == nil {
+		err := WrapIfErr(g.runGH(append([]string{"api"}, argv...)...), "failed to execute GitHub API request")
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		cmdAPI := api.NewCmdApi(g.Factory, runF)
 
-	cmdAPI.SetArgs(argv)
-	cmdAPI.SetIn(g.Stdin)
-	cmdAPI.SetOut(g.Stdout)
-	cmdAPI.SetErr(g.Stderr)
+		cmdAPI.SetArgs(argv)
+		cmdAPI.SetIn(g.Stdin)
+		cmdAPI.SetOut(g.Stdout)
+		cmdAPI.SetErr(g.Stderr)
 
-	// Request the GitHub API.
-	err := WrapIfErr(cmdAPI.Execute(), "failed to execute GitHub API request")
-	if err != nil {
-		return nil, err
+		// Request the GitHub API.
+		err := WrapIfErr(cmdAPI.Execute(), "failed to execute GitHub API request")
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	response := g.Stdout.Bytes()
 
 	var nodes []Comment
 
-	err = json.Unmarshal(response, &nodes)
+	err := json.Unmarshal(response, &nodes)
 	if err != nil {
 		return nil, WrapIfErr(err, "failed to parse GitHub API response. malformed JSON")
 	}

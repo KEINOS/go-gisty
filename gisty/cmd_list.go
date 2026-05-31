@@ -40,6 +40,15 @@ func (g *Gisty) List(args ListArgs) ([]GistInfo, error) {
 //
 // If altF is not nil, it will be used instead of the default delete function.
 func (g *Gisty) list(args []string, altF func(*list.ListOptions) error) ([]GistInfo, error) {
+	if altF == nil {
+		err := WrapIfErr(g.runGH(append([]string{commandGist, "list"}, args...)...), "failed to execute 'gist list' command")
+		if err != nil {
+			return nil, err
+		}
+
+		return parseGistInfo(g.Stdout.String())
+	}
+
 	cmd := list.NewCmdList(g.Factory, altF)
 
 	cmd.SetArgs(args)

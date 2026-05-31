@@ -19,6 +19,10 @@ func (g *Gisty) Delete(gist string) error {
 //
 // If altF is not nil, it will be used instead of the default delete function.
 func (g *Gisty) delete(gist string, altF func(*delete.DeleteOptions) error) error {
+	if altF == nil {
+		return WrapIfErr(g.runGH(commandGist, "delete", argOptYes, gist), "failed to delete gist")
+	}
+
 	cmd := delete.NewCmdDelete(g.Factory, altF)
 
 	cmd.SetArgs([]string{

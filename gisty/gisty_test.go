@@ -7,6 +7,20 @@ import (
 	_ "golang.org/x/oauth2"
 )
 
+const (
+	sanitizeTestGistID   = "7101f542be23e5048198e2a27c3cfda8"
+	sanitizeExpectedText = "abcdef"
+)
+
+func Test_authTokenGetter_ActiveToken(t *testing.T) {
+	t.Setenv("GH_TOKEN", "dummy-token")
+
+	token, source := authTokenGetter{}.ActiveToken("github.com")
+
+	require.Equal(t, "dummy-token", token)
+	require.Equal(t, "GH_TOKEN", source)
+}
+
 func TestSanitizeGistID(t *testing.T) {
 	t.Parallel()
 
@@ -14,10 +28,10 @@ func TestSanitizeGistID(t *testing.T) {
 		input    string
 		expected string
 	}{
-		{input: "7101f542be23e5048198e2a27c3cfda8", expected: "7101f542be23e5048198e2a27c3cfda8"},
-		{input: "abc<>def", expected: "abcdef"},
-		{input: "abcあいうえおde💩f", expected: "abcdef"},
-		{input: "abc\tde\nf", expected: "abcdef"},
+		{input: sanitizeTestGistID, expected: sanitizeTestGistID},
+		{input: "abc<>def", expected: sanitizeExpectedText},
+		{input: "abcあいうえおde💩f", expected: sanitizeExpectedText},
+		{input: "abc\tde\nf", expected: sanitizeExpectedText},
 	} {
 		expect := test.expected
 		actual := SanitizeGistID(test.input)

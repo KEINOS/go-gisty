@@ -15,13 +15,13 @@ For GitHub Enterprise users, the environment variable "GH_ENTERPRISE_TOKEN" or
 
 - Tips and info to implement Gisty commands
 
-The basic of Gisty is the wrapper of the sub command `gist` of `gh` application
-which is a Cobra instance from the `cli/cli` package. Gisty object receives the
-command arguments and passes them to Cobra command.
+The basic of Gisty is a wrapper of the `gh gist` command. Gisty receives the
+command arguments and passes them to the installed `gh` application. The `Read`
+method uses the GitHub API directly because it returns a structured Gist value.
 
 Commands that are not supported by `gh`, `Stargazer` for example, are implemented
-via `api` sub command of `cli/cli`("github.com/cli/cli/v2/pkg/cmd/api").
-This api package supports GitHub GraphQL API (v4) which supports more features
+via the `gh api` sub command. This sub command supports GitHub GraphQL API (v4),
+which supports more features
 than the REST API (v3) that `gh` uses.
 
 - GraphQL API documentation: https://docs.github.com/en/graphql
@@ -31,10 +31,11 @@ package gisty
 
 import (
 	"bytes"
+	"net/http"
 
 	buildinfo "github.com/KEINOS/go-gisty/gisty/buildinfos"
+	cliapi "github.com/cli/cli/v2/api"
 	"github.com/cli/cli/v2/pkg/cmd/api"
-	"github.com/cli/cli/v2/pkg/cmd/factory"
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
 	"github.com/cli/cli/v2/pkg/cmd/gist/create"
 	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
@@ -43,6 +44,7 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/repo/sync"
 	"github.com/cli/cli/v2/pkg/cmdutil"
 	"github.com/cli/cli/v2/pkg/iostreams"
+	ghauth "github.com/cli/go-gh/v2/pkg/auth"
 )
 
 // ----------------------------------------------------------------------------
@@ -95,31 +97,52 @@ const MaxCommentDefault = 100
 
 // NewGisty returns a new instance of Gisty.
 func NewGisty() *Gisty {
+	altFn := new(AltFunc)
 	buildDate := buildinfo.Date
 	buildVersion := buildinfo.Version
 	ios, stdin, stdout, stderr := iostreams.Test()
-	cmdFactory := factory.New(buildVersion, "go-gisty")
 
+	cmdFactory := new(cmdutil.Factory)
+
+	cmdFactory.AppVersion = buildVersion
+	cmdFactory.InvokingAgent = "go-gisty"
 	cmdFactory.IOStreams = ios
+	cmdFactory.HttpClient = newHTTPClient(buildVersion, "go-gisty")
 
-	return &Gisty{
-		AltFunctions: AltFunc{
-			Clone:     nil,
-			Create:    nil,
-			Comments:  nil,
-			Delete:    nil,
-			List:      nil,
-			Read:      nil,
-			Stargazer: nil,
-			Update:    nil,
-		},
-		Factory:      cmdFactory,
-		Stdin:        stdin,
-		Stdout:       stdout,
-		Stderr:       stderr,
-		BuildDate:    buildDate,
-		BuildVersion: buildVersion,
-		MaxComment:   MaxCommentDefault,
+	gst := new(Gisty)
+
+	gst.AltFunctions = *altFn
+	gst.Factory = cmdFactory
+	gst.Stdin = stdin
+	gst.Stdout = stdout
+	gst.Stderr = stderr
+	gst.BuildDate = buildDate
+	gst.BuildVersion = buildVersion
+	gst.MaxComment = MaxCommentDefault
+
+	return gst
+}
+
+type authTokenGetter struct{}
+
+func (authTokenGetter) ActiveToken(host string) (string, string) {
+	return ghauth.TokenForHost(host)
+}
+
+func newHTTPClient(appVersion, invokingAgent string) func() (*http.Client, error) {
+	return func() (*http.Client, error) {
+		return cliapi.NewHTTPClient(cliapi.HTTPClientOptions{
+			AppVersion:         appVersion,
+			InvokingAgent:      invokingAgent,
+			CacheTTL:           0,
+			Config:             authTokenGetter{},
+			EnableCache:        false,
+			Log:                nil,
+			LogColorize:        false,
+			LogVerboseHTTP:     false,
+			SkipDefaultHeaders: false,
+			TelemetryDisabler:  nil,
+		})
 	}
 }
 

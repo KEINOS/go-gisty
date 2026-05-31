@@ -7,11 +7,13 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+const stargazerTestGistID = "5b10b34f87955dfc86d310cd623a61d1"
+
 func TestGisty_Stargazer_msg_on_error(t *testing.T) {
 	t.Parallel()
 
 	obj := NewGisty()
-	gistID := "5b10b34f87955dfc86d310cd623a61d1"
+	gistID := stargazerTestGistID
 
 	obj.AltFunctions.Stargazer = func(*api.ApiOptions) error {
 		return NewErr("forced error")
@@ -29,7 +31,7 @@ func TestGisty_Stargazer_unexpected_response(t *testing.T) {
 	t.Parallel()
 
 	obj := NewGisty()
-	gistID := "5b10b34f87955dfc86d310cd623a61d1"
+	gistID := stargazerTestGistID
 
 	// Success to request but unexpected response.
 	obj.AltFunctions.Stargazer = func(apiOpt *api.ApiOptions) error {
