@@ -33,7 +33,7 @@ type GistInfo struct {
 func NewGistInfo(line string) (GistInfo, error) {
 	info, err := gistinfo.Parse(line)
 	if err != nil {
-		return GistInfo{}, WrapIfErr(err)
+		return GistInfo{}, WrapIfErr(err, "failed to parse line as GistInfo")
 	}
 
 	return GistInfo{
