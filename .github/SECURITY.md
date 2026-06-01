@@ -8,7 +8,7 @@
 | Golangci-lint latest | [![golangci-lint](https://github.com/KEINOS/go-gisty/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/golangci-lint.yml) | |
 | Security advisories | [Enabled](https://github.com/KEINOS/go-gisty/security/advisories) | |
 | Dependabot alerts | [Enabled](https://github.com/KEINOS/go-gisty/security/dependabot) | (Viewable only for admins) |
-| Code scanning alerts | [Enabled](https://github.com/KEINOS/go-gisty/security/code-scanning)<br>[![CodeQL-Analysis](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml) ||
+| Code scanning alerts | [Enabled](https://github.com/KEINOS/go-gisty/security/code-scanning)<br>[![CodeQL-Analysis](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml/badge.svg)](https://github.com/KEINOS/go-gisty/actions/workflows/codeQL-analysis.yml) | |
 
 ## Update
 

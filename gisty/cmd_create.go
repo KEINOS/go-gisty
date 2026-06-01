@@ -4,6 +4,7 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/KEINOS/go-gisty/internal/ghcmd"
 	"github.com/cli/cli/v2/pkg/cmd/gist/create"
 )
 
@@ -52,12 +53,7 @@ func (g *Gisty) create(args []string, altF func(*create.CreateOptions) error) (*
 
 	cmd := create.NewCmdCreate(g.Factory, altF)
 
-	cmd.SetArgs(args)
-	cmd.SetIn(g.Stdin)
-	cmd.SetOut(g.Stdout)
-	cmd.SetErr(g.Stderr)
-
-	err := WrapIfErr(cmd.Execute(), "failed to execute create command")
+	err := WrapIfErr(ghcmd.Execute(cmd, args, g.streams()), "failed to execute create command")
 	if err != nil {
 		return nil, err
 	}

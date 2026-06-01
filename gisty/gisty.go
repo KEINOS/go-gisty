@@ -31,10 +31,10 @@ package gisty
 
 import (
 	"bytes"
-	"net/http"
 
 	buildinfo "github.com/KEINOS/go-gisty/gisty/buildinfos"
-	cliapi "github.com/cli/cli/v2/api"
+	"github.com/KEINOS/go-gisty/gisty/internal/gistid"
+	"github.com/KEINOS/go-gisty/gisty/internal/httpclient"
 	"github.com/cli/cli/v2/pkg/cmd/api"
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
 	"github.com/cli/cli/v2/pkg/cmd/gist/create"
@@ -44,7 +44,6 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/repo/sync"
 	"github.com/cli/cli/v2/pkg/cmdutil"
 	"github.com/cli/cli/v2/pkg/iostreams"
-	ghauth "github.com/cli/go-gh/v2/pkg/auth"
 )
 
 // ----------------------------------------------------------------------------
@@ -107,7 +106,7 @@ func NewGisty() *Gisty {
 	cmdFactory.AppVersion = buildVersion
 	cmdFactory.InvokingAgent = "go-gisty"
 	cmdFactory.IOStreams = ios
-	cmdFactory.HttpClient = newHTTPClient(buildVersion, "go-gisty")
+	cmdFactory.HttpClient = httpclient.New(buildVersion, "go-gisty")
 
 	gst := new(Gisty)
 
@@ -123,47 +122,11 @@ func NewGisty() *Gisty {
 	return gst
 }
 
-type authTokenGetter struct{}
-
-func (authTokenGetter) ActiveToken(host string) (string, string) {
-	return ghauth.TokenForHost(host)
-}
-
-func newHTTPClient(appVersion, invokingAgent string) func() (*http.Client, error) {
-	return func() (*http.Client, error) {
-		return cliapi.NewHTTPClient(cliapi.HTTPClientOptions{
-			AppVersion:         appVersion,
-			InvokingAgent:      invokingAgent,
-			CacheTTL:           0,
-			Config:             authTokenGetter{},
-			EnableCache:        false,
-			Log:                nil,
-			LogColorize:        false,
-			LogVerboseHTTP:     false,
-			SkipDefaultHeaders: false,
-			TelemetryDisabler:  nil,
-		})
-	}
-}
-
 // ----------------------------------------------------------------------------
 //  Functions
 // ----------------------------------------------------------------------------
 
 // SanitizeGistID removes non-alphanumeric characters from gistID.
 func SanitizeGistID(gistID string) string {
-	bytesGistID := []byte(gistID)
-	index := 0
-
-	for _, b := range bytesGistID {
-		if ('a' <= b && b <= 'z') ||
-			('A' <= b && b <= 'Z') ||
-			('0' <= b && b <= '9') ||
-			b == ' ' {
-			bytesGistID[index] = b
-			index++
-		}
-	}
-
-	return string(bytesGistID[:index])
+	return gistid.Sanitize(gistID)
 }

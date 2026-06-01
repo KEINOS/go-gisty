@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"al.essio.dev/pkg/shellescape"
+	"github.com/KEINOS/go-gisty/internal/ghcmd"
 	"github.com/cli/cli/v2/pkg/cmd/api"
 )
 
@@ -41,12 +42,7 @@ func (g *Gisty) stargazer(gistID string, runF func(*api.ApiOptions) error) (int,
 	} else {
 		cmdAPI := api.NewCmdApi(g.Factory, runF)
 
-		cmdAPI.SetArgs(argv)
-		cmdAPI.SetIn(g.Stdin)
-		cmdAPI.SetOut(g.Stdout)
-		cmdAPI.SetErr(g.Stderr)
-
-		err := WrapIfErr(cmdAPI.Execute(), "failed to execute GitHub API request")
+		err := WrapIfErr(ghcmd.Execute(cmdAPI, argv, g.streams()), "failed to execute GitHub API request")
 		if err != nil {
 			return 0, err
 		}
