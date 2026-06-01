@@ -1,6 +1,7 @@
 package gisty
 
 import (
+	"github.com/KEINOS/go-gisty/internal/ghcmd"
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
 )
 
@@ -29,10 +30,5 @@ func (g *Gisty) clone(args []string, altF func(*clone.CloneOptions) error) error
 
 	cmd := clone.NewCmdClone(g.Factory, altF)
 
-	cmd.SetArgs(args)
-	cmd.SetIn(g.Stdin)
-	cmd.SetOut(g.Stdout)
-	cmd.SetErr(g.Stderr)
-
-	return WrapIfErr(cmd.Execute(), "failed to execute gist clone")
+	return WrapIfErr(ghcmd.Execute(cmd, args, g.streams()), "failed to execute gist clone")
 }

@@ -3,6 +3,7 @@ package gisty
 import (
 	"strings"
 
+	"github.com/KEINOS/go-gisty/internal/ghcmd"
 	"github.com/cli/cli/v2/pkg/cmd/gist/shared"
 	"github.com/cli/cli/v2/pkg/cmd/gist/view"
 	ghauth "github.com/cli/go-gh/v2/pkg/auth"
@@ -36,12 +37,7 @@ func (g *Gisty) read(gist string, altF func(*view.ViewOptions) error) (*shared.G
 
 	cmd := view.NewCmdView(g.Factory, runView)
 
-	cmd.SetArgs([]string{gist})
-	cmd.SetIn(g.Stdin)
-	cmd.SetOut(g.Stdout)
-	cmd.SetErr(g.Stderr)
-
-	err := cmd.Execute()
+	err := ghcmd.Execute(cmd, []string{gist}, g.streams())
 	if err != nil {
 		return nil, WrapIfErr(err, "failed to read gist")
 	}

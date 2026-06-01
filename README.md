@@ -10,6 +10,17 @@ It can retrieve the stargazers (number of stars) of a gist as well.
 Most methods execute the [GitHub CLI](https://cli.github.com/) internally.
 Install `gh` and make sure it is available in `PATH`.
 
+To use the `gisty` command as a shorthand for `gh gist`, install it with:
+
+```console
+go install github.com/KEINOS/go-gisty/cmd/gisty@latest
+gisty list
+```
+
+The `gisty` command behaves as a transparent wrapper. It preserves the child
+`gh` exit code when available and falls back to status `1` if `gh` cannot be
+started.
+
 ```go
 go get "github.com/KEINOS/go-gisty"
 ```

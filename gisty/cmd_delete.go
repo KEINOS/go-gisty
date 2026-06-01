@@ -1,6 +1,7 @@
 package gisty
 
 import (
+	"github.com/KEINOS/go-gisty/internal/ghcmd"
 	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
 )
 
@@ -25,13 +26,10 @@ func (g *Gisty) delete(gist string, altF func(*delete.DeleteOptions) error) erro
 
 	cmd := delete.NewCmdDelete(g.Factory, altF)
 
-	cmd.SetArgs([]string{
+	args := []string{
 		argOptYes,
 		gist,
-	})
-	cmd.SetIn(g.Stdin)
-	cmd.SetOut(g.Stdout)
-	cmd.SetErr(g.Stderr)
+	}
 
-	return WrapIfErr(cmd.Execute(), "failed to delete gist")
+	return WrapIfErr(ghcmd.Execute(cmd, args, g.streams()), "failed to delete gist")
 }

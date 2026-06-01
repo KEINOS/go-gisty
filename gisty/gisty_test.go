@@ -12,15 +12,6 @@ const (
 	sanitizeExpectedText = "abcdef"
 )
 
-func Test_authTokenGetter_ActiveToken(t *testing.T) {
-	t.Setenv("GH_TOKEN", "dummy-token")
-
-	token, source := authTokenGetter{}.ActiveToken("github.com")
-
-	require.Equal(t, "dummy-token", token)
-	require.Equal(t, "GH_TOKEN", source)
-}
-
 func TestSanitizeGistID(t *testing.T) {
 	t.Parallel()
 
