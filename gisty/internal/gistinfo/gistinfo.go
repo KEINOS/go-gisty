@@ -89,7 +89,7 @@ func ParseIsPublic(chunk string) (bool, error) {
 	case "secret":
 		return false, nil
 	default:
-		return false, fmt.Errorf("%w from: %s", errInvalidVisibility, chunk)
+		return false, fmt.Errorf("%w from: %q", errInvalidVisibility, chunk)
 	}
 }
 
