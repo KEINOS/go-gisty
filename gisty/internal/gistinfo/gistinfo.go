@@ -97,7 +97,7 @@ func ParseIsPublic(chunk string) (bool, error) {
 func ParseTime(chunk string) (time.Time, error) {
 	updatedAt, err := time.Parse(time.RFC3339, chunk)
 	if err != nil {
-		return time.Time{}, fmt.Errorf("failed to parse time from: %s: %w", chunk, err)
+		return time.Time{}, fmt.Errorf("failed to parse time from: %q: %w", chunk, err)
 	}
 
 	return updatedAt, nil
