@@ -5,7 +5,7 @@ go 1.26.1
 require (
 	al.essio.dev/pkg/shellescape v1.6.0
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.96.0
+	github.com/cli/cli/v2 v2.97.0
 	github.com/cli/go-gh/v2 v2.13.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.11.1
