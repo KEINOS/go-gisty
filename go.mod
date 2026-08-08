@@ -31,7 +31,7 @@ require (
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
 	github.com/charmbracelet/glamour v1.0.0 // indirect
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
-	github.com/charmbracelet/ultraviolet v0.0.0-20260803092147-8b693049ce2a // indirect
+	github.com/charmbracelet/ultraviolet v0.0.0-20260808192814-d38ea0f8aa5c // indirect
 	github.com/charmbracelet/x/ansi v0.11.7 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.15 // indirect
 	github.com/charmbracelet/x/exp/ordered v0.1.0 // indirect
@@ -47,7 +47,7 @@ require (
 	github.com/clipperhouse/uax29/v2 v2.7.0 // indirect
 	github.com/danieljoos/wincred v1.2.3 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
-	github.com/dlclark/regexp2/v2 v2.5.2 // indirect
+	github.com/dlclark/regexp2/v2 v2.6.0 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.15 // indirect
