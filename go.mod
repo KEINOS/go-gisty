@@ -13,7 +13,7 @@ require (
 )
 
 require (
-	charm.land/bubbles/v2 v2.2.0 // indirect
+	charm.land/bubbles/v2 v2.2.1 // indirect
 	charm.land/bubbletea/v2 v2.0.9 // indirect
 	charm.land/huh/v2 v2.0.3 // indirect
 	charm.land/lipgloss/v2 v2.0.6 // indirect
