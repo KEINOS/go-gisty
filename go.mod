@@ -5,8 +5,8 @@ go 1.26.1
 require (
 	al.essio.dev/pkg/shellescape v1.6.1
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.98.0
-	github.com/cli/go-gh/v2 v2.13.0
+	github.com/cli/cli/v2 v2.99.0
+	github.com/cli/go-gh/v2 v2.15.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.12.1
 	golang.org/x/oauth2 v0.33.0
@@ -31,11 +31,11 @@ require (
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
 	github.com/charmbracelet/glamour v1.0.0 // indirect
 	github.com/charmbracelet/lipgloss v1.1.1-0.20250404203927-76690c660834 // indirect
-	github.com/charmbracelet/ultraviolet v0.0.0-20260901015450-d60c34963517 // indirect
+	github.com/charmbracelet/ultraviolet v0.0.0-20260902113444-043ea8a7d37d // indirect
 	github.com/charmbracelet/x/ansi v0.11.8 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.15 // indirect
 	github.com/charmbracelet/x/exp/ordered v0.1.0 // indirect
-	github.com/charmbracelet/x/exp/slice v0.0.0-20260830003929-9f48cc723c1c // indirect
+	github.com/charmbracelet/x/exp/slice v0.0.0-20260902165432-6f6ad8b37b0a // indirect
 	github.com/charmbracelet/x/exp/strings v0.1.0 // indirect
 	github.com/charmbracelet/x/term v0.2.2 // indirect
 	github.com/charmbracelet/x/termios v0.1.1 // indirect
@@ -66,7 +66,7 @@ require (
 	github.com/lucasb-eyer/go-colorful v1.4.1 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
-	github.com/mattn/go-runewidth v0.0.28 // indirect
+	github.com/mattn/go-runewidth v0.0.29 // indirect
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/microcosm-cc/bluemonday v1.0.27 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
@@ -90,7 +90,7 @@ require (
 	github.com/yuin/goldmark-emoji v1.0.6 // indirect
 	github.com/zalando/go-keyring v0.2.8 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
-	golang.org/x/crypto v0.55.0 // indirect
+	golang.org/x/crypto v0.56.0 // indirect
 	golang.org/x/net v0.58.0 // indirect
 	golang.org/x/sync v0.22.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
