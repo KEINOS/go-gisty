@@ -29,10 +29,12 @@ func TestGisty_Read_golden(t *testing.T) {
 		// Dummy files in a gist.
 		files := map[string]*shared.GistFile{
 			"file1.txt": {
-				Filename: "file1.txt",
-				Type:     "text/plain",
-				Language: "Text",
-				Content:  "This is the content of the file1.",
+				Filename:  "file1.txt",
+				Type:      "text/plain",
+				Language:  "Text",
+				Content:   "This is the content of the file1.",
+				RawURL:    "",
+				Truncated: false,
 			},
 		}
 
@@ -139,11 +141,10 @@ func Test_readRun_fail_create_http_client(t *testing.T) {
 	t.Parallel()
 
 	//nolint:exhaustruct // Missing fields are ok here.
-	opts := &view.ViewOptions{
-		Selector: readTestGistID,
-		HttpClient: func() (*http.Client, error) {
-			return nil, NewErr("forced error")
-		},
+	opts := new(view.ViewOptions)
+	opts.Selector = readTestGistID
+	opts.HttpClient = func() (*http.Client, error) {
+		return nil, NewErr("forced error")
 	}
 
 	gist, err := readRun(opts)

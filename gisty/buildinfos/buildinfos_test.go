@@ -50,7 +50,7 @@ func Test_getVersion_from_build_info(t *testing.T) {
 
 	// mock debugReadBuildInfo to force return a version
 	debugReadBuildInfo = func() (*debug.BuildInfo, bool) {
-		//nolint:exhaustruct // this is a test
+		//nolint:exhaustruct_v5 // this is a test
 		return &debug.BuildInfo{
 			Main: debug.Module{
 				Version: testVersion123,
@@ -77,7 +77,7 @@ func Test_getVersion_from_build_info_with_empty_version(t *testing.T) {
 	}()
 
 	debugReadBuildInfo = func() (*debug.BuildInfo, bool) {
-		//nolint:exhaustruct // this is a test
+		//nolint:exhaustruct_v5 // this is a test
 		return &debug.BuildInfo{
 			Main: debug.Module{
 				Version: "",
