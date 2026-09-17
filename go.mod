@@ -1,12 +1,12 @@
 module github.com/KEINOS/go-gisty
 
-go 1.26.1
+go 1.27.0
 
 require (
 	al.essio.dev/pkg/shellescape v1.6.1
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.100.0
-	github.com/cli/go-gh/v2 v2.16.0
+	github.com/cli/cli/v2 v2.101.0
+	github.com/cli/go-gh/v2 v2.16.1
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.12.1
 	golang.org/x/oauth2 v0.33.0
