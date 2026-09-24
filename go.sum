@@ -2,8 +2,8 @@ al.essio.dev/pkg/shellescape v1.6.1 h1:ki/kUs/D3dDbZpyKbNRhwY/ajgAEIJFagVKDWKnof
 al.essio.dev/pkg/shellescape v1.6.1/go.mod h1:6sIqp7X2P6mThCQ7twERpZTuigpr6KbZWtls1U8I890=
 charm.land/bubbles/v2 v2.2.1 h1:Fq1+qm5hV6GkvzLQDhCBpXXE5tLgvh1PRriCLwSvIQU=
 charm.land/bubbles/v2 v2.2.1/go.mod h1:wdMgn+sje1KNXdwFizIWjbf328fIUBxqEmJ/vYPo8yc=
-charm.land/bubbletea/v2 v2.0.9 h1:DpJCMWKgzQK8SJv4zbKKFHAI10ymWy/evClPFk0k0f8=
-charm.land/bubbletea/v2 v2.0.9/go.mod h1:2SkdgoTXluXJHOUwAoRlRXF/28vklb1rFl6GcgV1/ss=
+charm.land/bubbletea/v2 v2.0.10 h1:oolvo20VBpI0PfqE7iFjkZ1bx0WpmXGfnKz5Yldjq5o=
+charm.land/bubbletea/v2 v2.0.10/go.mod h1:QOatcnhOjYIfxzUSTz6raF7Ex4R/rIuHa3SnBdCCpMc=
 charm.land/huh/v2 v2.0.3 h1:2cJsMqEPwSywGHvdlKsJyQKPtSJLVnFKyFbsYZTlLkU=
 charm.land/huh/v2 v2.0.3/go.mod h1:93eEveeeqn47MwiC3tf+2atZ2l7Is88rAtmZNZ8x9Wc=
 charm.land/lipgloss/v2 v2.0.6 h1:EaGKeuA8FvF+v2BT5VmZd2LoYLaMZJXA5n34th8nCIQ=
@@ -60,8 +60,8 @@ github.com/charmbracelet/x/exp/golden v0.0.0-20250806222409-83e3a29d542f h1:pk6g
 github.com/charmbracelet/x/exp/golden v0.0.0-20250806222409-83e3a29d542f/go.mod h1:IfZAMTHB6XkZSeXUqriemErjAWCCzT0LwjKFYCZyw0I=
 github.com/charmbracelet/x/exp/ordered v0.1.0 h1:55/qLwjIh0gL0Vni+QAWk7T/qRVP6sBf+2agPBgnOFE=
 github.com/charmbracelet/x/exp/ordered v0.1.0/go.mod h1:5UHwmG+is5THxMyCJHNPCn2/ecI07aKNrW+LcResjJ8=
-github.com/charmbracelet/x/exp/slice v0.0.0-20260920004010-53e2afe73ae5 h1:VE9hnLa26cT2N+5m7Rj5dLkiFcBU4p6If0IH5Kug1bA=
-github.com/charmbracelet/x/exp/slice v0.0.0-20260920004010-53e2afe73ae5/go.mod h1:vqEfX6xzqW1pKKZUUiFOKg0OQ7bCh54Q2vR/tserrRA=
+github.com/charmbracelet/x/exp/slice v0.1.0 h1:m46dwuDf3M5SFYMRhxYkLC6z9WnENGVKbcbJlp13/og=
+github.com/charmbracelet/x/exp/slice v0.1.0/go.mod h1:vqEfX6xzqW1pKKZUUiFOKg0OQ7bCh54Q2vR/tserrRA=
 github.com/charmbracelet/x/exp/strings v0.1.0 h1:i69S2XI7uG1u4NLGeJPSYU++Nmjvpo9nwd6aoEm7gkA=
 github.com/charmbracelet/x/exp/strings v0.1.0/go.mod h1:/ehtMPNh9K4odGFkqYJKpIYyePhdp1hLBRvyY4bWkH8=
 github.com/charmbracelet/x/term v0.2.2 h1:xVRT/S2ZcKdhhOuSP4t5cLi5o+JxklsoEObBSgfgZRk=
