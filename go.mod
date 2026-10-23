@@ -5,7 +5,7 @@ go 1.27.0
 require (
 	al.essio.dev/pkg/shellescape v1.6.1
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.103.0
+	github.com/cli/cli/v2 v2.103.1
 	github.com/cli/go-gh/v2 v2.17.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.12.1
@@ -30,7 +30,7 @@ require (
 	github.com/briandowns/spinner v1.23.2 // indirect
 	github.com/catppuccin/go v0.3.0 // indirect
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
-	github.com/charmbracelet/ultraviolet v0.0.0-20261008173134-6b8d4baf91b4 // indirect
+	github.com/charmbracelet/ultraviolet v0.0.0-20261023060817-a45b7c86333f // indirect
 	github.com/charmbracelet/x/ansi v0.11.9 // indirect
 	github.com/charmbracelet/x/exp/ordered v0.1.0 // indirect
 	github.com/charmbracelet/x/exp/slice v0.1.0 // indirect
