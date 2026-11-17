@@ -80,14 +80,14 @@ require (
 	github.com/spf13/cobra v1.10.2 // indirect
 	github.com/spf13/pflag v1.1.0 // indirect
 	github.com/stretchr/objx v0.8.0 // indirect
-	github.com/thlib/go-timezone-local v0.0.9 // indirect
+	github.com/thlib/go-timezone-local v0.1.0 // indirect
 	github.com/xo/terminfo v1.3.1 // indirect
 	github.com/yuin/goldmark v1.8.7 // indirect
 	github.com/yuin/goldmark-emoji v1.0.6 // indirect
 	github.com/zalando/go-keyring v0.2.8 // indirect
 	go.yaml.in/yaml/v3 v3.0.6 // indirect
 	golang.org/x/crypto v0.59.0 // indirect
-	golang.org/x/net v0.62.0 // indirect
+	golang.org/x/net v0.63.0 // indirect
 	golang.org/x/sync v0.25.0 // indirect
 	golang.org/x/sys v0.50.0 // indirect
 	golang.org/x/term v0.48.0 // indirect
