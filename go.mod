@@ -5,7 +5,7 @@ go 1.27.0
 require (
 	al.essio.dev/pkg/shellescape v1.6.1
 	github.com/MakeNowJust/heredoc v1.0.0
-	github.com/cli/cli/v2 v2.104.0
+	github.com/cli/cli/v2 v2.105.0
 	github.com/cli/go-gh/v2 v2.17.0
 	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.12.1
@@ -14,7 +14,7 @@ require (
 
 require (
 	charm.land/bubbles/v2 v2.2.1 // indirect
-	charm.land/bubbletea/v2 v2.1.1 // indirect
+	charm.land/bubbletea/v2 v2.1.2 // indirect
 	charm.land/glamour/v2 v2.0.2-0.20261015065741-010543cac1a0 // indirect
 	charm.land/huh/v2 v2.0.3 // indirect
 	charm.land/lipgloss/v2 v2.1.1 // indirect
@@ -31,7 +31,7 @@ require (
 	github.com/catppuccin/go v0.3.0 // indirect
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
 	github.com/charmbracelet/ultraviolet v0.0.0-20261023060817-a45b7c86333f // indirect
-	github.com/charmbracelet/x/ansi v0.11.9 // indirect
+	github.com/charmbracelet/x/ansi v0.11.10 // indirect
 	github.com/charmbracelet/x/exp/ordered v0.1.0 // indirect
 	github.com/charmbracelet/x/exp/slice v0.1.0 // indirect
 	github.com/charmbracelet/x/exp/strings v0.1.0 // indirect
@@ -45,7 +45,7 @@ require (
 	github.com/clipperhouse/displaywidth v0.11.0 // indirect
 	github.com/clipperhouse/uax29/v2 v2.7.0 // indirect
 	github.com/danieljoos/wincred v1.2.3 // indirect
-	github.com/dlclark/regexp2/v2 v2.13.0 // indirect
+	github.com/dlclark/regexp2/v2 v2.13.1 // indirect
 	github.com/dustin/go-humanize v1.1.0 // indirect
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.16 // indirect
