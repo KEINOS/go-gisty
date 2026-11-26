@@ -38,7 +38,7 @@ import (
 	"github.com/cli/cli/v2/pkg/cmd/api"
 	"github.com/cli/cli/v2/pkg/cmd/gist/clone"
 	"github.com/cli/cli/v2/pkg/cmd/gist/create"
-	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
+	gistdelete "github.com/cli/cli/v2/pkg/cmd/gist/delete"
 	"github.com/cli/cli/v2/pkg/cmd/gist/list"
 	"github.com/cli/cli/v2/pkg/cmd/gist/view"
 	"github.com/cli/cli/v2/pkg/cmd/repo/sync"
@@ -80,7 +80,7 @@ type AltFunc struct {
 	Clone     func(*clone.CloneOptions) error
 	Comments  func(*api.ApiOptions) error
 	Create    func(*create.CreateOptions) error
-	Delete    func(*delete.DeleteOptions) error
+	Delete    func(*gistdelete.DeleteOptions) error
 	List      func(*list.ListOptions) error
 	Read      func(*view.ViewOptions) error
 	Stargazer func(*api.ApiOptions) error

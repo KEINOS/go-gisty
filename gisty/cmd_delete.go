@@ -2,7 +2,7 @@ package gisty
 
 import (
 	"github.com/KEINOS/go-gisty/internal/ghcmd"
-	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
+	gistdelete "github.com/cli/cli/v2/pkg/cmd/gist/delete"
 )
 
 // Current `gh gist delete“ command requires `--yes` arg option when not running
@@ -19,12 +19,12 @@ func (g *Gisty) Delete(gist string) error {
 // delete is a wrapper around the delete command from the gh cli.
 //
 // If altF is not nil, it will be used instead of the default delete function.
-func (g *Gisty) delete(gist string, altF func(*delete.DeleteOptions) error) error {
+func (g *Gisty) delete(gist string, altF func(*gistdelete.DeleteOptions) error) error {
 	if altF == nil {
 		return WrapIfErr(g.runGH(commandGist, "delete", argOptYes, gist), "failed to delete gist")
 	}
 
-	cmd := delete.NewCmdDelete(g.Factory, altF)
+	cmd := gistdelete.NewCmdDelete(g.Factory, altF)
 
 	args := []string{
 		argOptYes,

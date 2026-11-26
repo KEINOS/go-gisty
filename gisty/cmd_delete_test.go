@@ -3,7 +3,7 @@ package gisty
 import (
 	"testing"
 
-	"github.com/cli/cli/v2/pkg/cmd/gist/delete"
+	gistdelete "github.com/cli/cli/v2/pkg/cmd/gist/delete"
 	"github.com/stretchr/testify/require"
 )
 
@@ -15,7 +15,7 @@ func TestGisty_Delete_msg_on_error(t *testing.T) {
 	// Execute the delete command.
 	targetGist := "https://gist.github.com/unknown.git"
 
-	obj.AltFunctions.Delete = func(*delete.DeleteOptions) error {
+	obj.AltFunctions.Delete = func(*gistdelete.DeleteOptions) error {
 		return NewErr("forced error for deleting")
 	}
 
