@@ -55,7 +55,9 @@ func New(appVersion, invokingAgent string) func() (*http.Client, error) {
 			EnableCache:        false,
 			Log:                nil,
 			LogColorize:        false,
+			LogHeadlineOnly:    false,
 			LogVerboseHTTP:     false,
+			RefreshingConfig:   nil,
 			SkipDefaultHeaders: false,
 			TelemetryDisabler:  nil,
 		})
